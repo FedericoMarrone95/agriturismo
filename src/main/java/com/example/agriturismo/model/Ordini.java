@@ -15,7 +15,7 @@ public class Ordini {
     private Date dataOraOrdine;
     @Column
     private Double importo;
-    @JoinColumn(name = "id_cliente", referencedColumnName = "id")
+    @JoinColumn(name = "id_utente", referencedColumnName = "id")
     private Utente utente;
 
     public int getId() {
