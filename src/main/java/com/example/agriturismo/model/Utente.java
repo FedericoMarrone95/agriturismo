@@ -20,6 +20,8 @@ public class Utente {
     private String email;
     @Column
     private String telefono;
+    @Column
+    private String profilo;
 
     public int getId() {
         return id;
@@ -75,5 +77,13 @@ public class Utente {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public String getProfilo() {
+        return profilo;
+    }
+
+    public void setProfilo(String profilo) {
+        this.profilo = profilo;
     }
 }
