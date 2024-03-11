@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mar 11, 2024 alle 16:45
+-- Creato il: Mar 11, 2024 alle 17:52
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -75,18 +75,37 @@ CREATE TABLE `prodotti` (
   `nome` varchar(100) NOT NULL,
   `descrizione` varchar(255) NOT NULL,
   `prezzo` double NOT NULL,
-  `tipologia` varchar(50) NOT NULL,
   `immagine` longtext DEFAULT NULL,
-  `scorte` int(11) NOT NULL
+  `scorte` int(11) NOT NULL,
+  `id_tipologia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `prodotti`
 --
 
-INSERT INTO `prodotti` (`id`, `nome`, `descrizione`, `prezzo`, `tipologia`, `immagine`, `scorte`) VALUES
-(1, 'Miele Mille Fiori 500g', 'Miele biologico di prima qualità made in Agriturismo Lacerba, proveniente da api italiane', 56, 'Miele e Confettura', NULL, 100),
-(2, 'Orecchiette 500g', 'Orecchiette fatte a mano prodotte con farine biologiche', 4, 'Pasta', NULL, 100);
+INSERT INTO `prodotti` (`id`, `nome`, `descrizione`, `prezzo`, `immagine`, `scorte`, `id_tipologia`) VALUES
+(1, 'Miele Mille Fiori 500g', 'Miele biologico di prima qualità made in Agriturismo Lacerba, proveniente da api italiane', 56, NULL, 100, 1),
+(2, 'Orecchiette 500g', 'Orecchiette fatte a mano prodotte con farine biologiche', 4, NULL, 100, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `tipologie`
+--
+
+CREATE TABLE `tipologie` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `tipologie`
+--
+
+INSERT INTO `tipologie` (`id`, `nome`) VALUES
+(1, 'Miele e Confetture'),
+(2, 'Pasta');
 
 -- --------------------------------------------------------
 
@@ -141,6 +160,13 @@ ALTER TABLE `ordini_prodotti`
 -- Indici per le tabelle `prodotti`
 --
 ALTER TABLE `prodotti`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tipologia` (`id_tipologia`);
+
+--
+-- Indici per le tabelle `tipologie`
+--
+ALTER TABLE `tipologie`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -172,6 +198,12 @@ ALTER TABLE `prodotti`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT per la tabella `tipologie`
+--
+ALTER TABLE `tipologie`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT per la tabella `utenti`
 --
 ALTER TABLE `utenti`
@@ -193,6 +225,12 @@ ALTER TABLE `ordini`
 ALTER TABLE `ordini_prodotti`
   ADD CONSTRAINT `ordine` FOREIGN KEY (`id_ordine`) REFERENCES `ordini` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `prodotto` FOREIGN KEY (`id_prodotto`) REFERENCES `prodotti` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limiti per la tabella `prodotti`
+--
+ALTER TABLE `prodotti`
+  ADD CONSTRAINT `tipologia` FOREIGN KEY (`id_tipologia`) REFERENCES `tipologie` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
