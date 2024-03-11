@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "ordini")
-public class Ordini {
+public class Ordine {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

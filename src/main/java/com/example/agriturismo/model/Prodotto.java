@@ -15,11 +15,11 @@ public class Prodotto {
     @Column
     private double prezzo;
     @Column
-    private String tipologia;
-    @Column
     private String immagine;
     @Column
     private int scorte;
+    @JoinColumn(name = "id_tipologia", referencedColumnName = "id")
+    private Tipologia tipologia;
 
     public int getId() {
         return id;
@@ -57,15 +57,6 @@ public class Prodotto {
         return this;
     }
 
-    public String getTipologia() {
-        return tipologia;
-    }
-
-    public Prodotto setTipologia(String tipologia) {
-        this.tipologia = tipologia;
-        return this;
-    }
-
     public String getImmagine() {
         return immagine;
     }
@@ -82,5 +73,13 @@ public class Prodotto {
     public Prodotto setScorte(int scorte) {
         this.scorte = scorte;
         return this;
+    }
+
+    public Tipologia getTipologia() {
+        return tipologia;
+    }
+
+    public void setTipologia(Tipologia tipologia) {
+        this.tipologia = tipologia;
     }
 }
