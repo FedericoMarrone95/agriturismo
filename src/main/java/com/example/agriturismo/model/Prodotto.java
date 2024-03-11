@@ -18,6 +18,7 @@ public class Prodotto {
     private String immagine;
     @Column
     private int scorte;
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "id_tipologia", referencedColumnName = "id")
     private Tipologia tipologia;
 
