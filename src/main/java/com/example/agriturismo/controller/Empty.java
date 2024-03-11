@@ -1,4 +1,4 @@
 package com.example.agriturismo.controller;
 
-public class empty {
+public class Empty {
 }
