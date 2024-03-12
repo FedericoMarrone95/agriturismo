@@ -27,4 +27,10 @@ public class ProdottoServiceImpl implements ProdottoService {
             return prodottoOptional.get();
         return null;
     }
+
+    @Override
+    public Object validaProdotto(Prodotto prodotto, String nome, String descrizione, String prezzo, String scorte, int id_tipologia){
+
+    }
+
 }

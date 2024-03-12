@@ -40,8 +40,20 @@ public class AdminProdottiController {
             @RequestParam("descrizione") String descrizione,
             @RequestParam("prezzo") String prezzo,
             @RequestParam("scorte") String scorte,
+            @RequestParam("tipologia") int idTipologia,
             @RequestParam(name="immagine", required = false) MultipartFile immagine
     ){
-       
+        Object risultatoValidazione = prodottoService.validaProdotto(prodotto, nome, descrizione, prezzo, scorte, idTipologia);
+        // se abbiamo errori di validazione
+        if(risultatoValidazione != null)
+        {
+            prodotto = (Prodotto) ((Object[])risultatoValidazione)[0];
+            errori = (Map<String, String>) ((Object[])risultatoValidazione)[1];
+            return "redirect:/adminlibri";
+        }
+        prodottoService.registraProdotto(prodotto, nome, descrizione, prezzo, scorte, idTipologia, immagine);
+        prodotto = null;
+        errori = null;
+        return "redirect:/adminlibri";
     }
 }
