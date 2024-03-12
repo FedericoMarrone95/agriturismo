@@ -2,6 +2,9 @@ package com.example.agriturismo.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "tipologie")
 public class Tipologia {
@@ -10,6 +13,15 @@ public class Tipologia {
     private int id;
     @Column
     private String nome;
+
+    @OneToMany
+            (
+                    mappedBy = "tipologia",
+                    cascade = CascadeType.REMOVE,
+                    fetch = FetchType.EAGER,
+                    orphanRemoval = true
+            )
+    private List<Prodotto> prodotti = new ArrayList<>();
 
     public int getId() {
         return id;
