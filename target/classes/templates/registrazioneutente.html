@@ -19,6 +19,12 @@
     <input type="password" th:field="*{password}" placeholder="scegli password" required>
     <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
     <br>
+    <input type="text" th:field="*{indirizzo}" placeholder="inserisci indirizzo" required>
+    <br>
+    <input type="text" th:field="*{email}" placeholder="inserisci email" required>
+    <br>
+    <input type="number" th:field="*{telefono}" placeholder="inserisci telefono" required>
+    <br>
     <input type="submit" value="Registrati">
 </form>
 </body>
