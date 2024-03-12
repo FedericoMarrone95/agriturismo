@@ -1,6 +1,7 @@
 package com.example.agriturismo.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +13,10 @@ public class Utente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column
+    @Pattern(regexp="[a-zA-Zàèìòù\\s']{1,50}", message = "caratteri non ammessi")
     private String nome;
     @Column
+    @Pattern(regexp="[a-zA-Zàèòù\\s']{1,50}", message = "caratteri non ammessi")
     private String cognome;
     @Column
     private String username;
