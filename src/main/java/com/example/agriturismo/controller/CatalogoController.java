@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 @Controller
-@RequestMapping("/")
+@RequestMapping("/catalogo")
 public class CatalogoController {
     @Autowired
     private ProdottoService prodottoService;
@@ -18,6 +18,6 @@ public class CatalogoController {
     public String getPage(Model model){
         List<Prodotto> prodotti= prodottoService.getProdotti();
         model.addAttribute("prodotti", prodotti);
-        return "index";
+        return "catalogo";
     }
 }
