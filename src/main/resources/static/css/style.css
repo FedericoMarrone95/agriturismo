@@ -16,10 +16,29 @@
   padding: 0px 10px;
 }
 .primo-blocco{
-    height: 350px;
-    background-color: gray;
+    height: 450px;
+    background-image: url(../img/foto1.jpeg);
     padding-top: 100px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
 }
 .m-12{
     margin-top: 50px;
+}
+h1{
+    font-size: 60px;
+}
+nav.navbar.navbar-expand-lg.bg-body-tertiary {
+    background-color: green;
+}
+a.nav-link {
+    color: #fefefe !important;
+}
+a.nav-link.active {
+    color: #fff !important;
+}
+a.navbar-brand {
+    color: #fff;
 }
