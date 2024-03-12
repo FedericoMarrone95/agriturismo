@@ -27,7 +27,7 @@ public class UtenteServiceImpl implements UtenteService{
 
     @Override
     public boolean controlloUsername(String username) {
-        if(utenteDao.findByProfiloUsername(username)==null)
+        if(utenteDao.findByUsername(username)==null)
             return true;
         return false;
     }
