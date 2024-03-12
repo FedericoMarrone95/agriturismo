@@ -15,6 +15,7 @@ public class Ordine {
     private Date dataOraOrdine;
     @Column
     private Double importo;
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "id_utente", referencedColumnName = "id")
     private Utente utente;
 
