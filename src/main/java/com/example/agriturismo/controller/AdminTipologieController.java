@@ -5,9 +5,7 @@ import com.example.agriturismo.service.TipologiaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,5 +24,16 @@ public class AdminTipologieController {
         model.addAttribute("tipologie", tipologie);
         model.addAttribute("tipologia", tipologia);
         return null; //inserire la pagina html
+    }
+    @PostMapping
+    public String formManager(@ModelAttribute("tipologia") Tipologia tipologia){
+        tipologiaService.registraTipologia(tipologia);
+        return "redirect:/admintipologie";
+    }
+
+    @GetMapping("/elimina")
+    public String eliminaTipologia(@RequestParam("id") int id){
+        tipologiaService.cancellaTipologia(id);
+        return "redirect:/admintipologie";
     }
 }
