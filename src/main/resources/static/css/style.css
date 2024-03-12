@@ -15,3 +15,11 @@
   font-size: 28px; /* Increased text to enable scrolling */
   padding: 0px 10px;
 }
+.primo-blocco{
+    height: 350px;
+    background-color: gray;
+    padding-top: 100px;
+}
+.m-12{
+    margin-top: 50px;
+}
