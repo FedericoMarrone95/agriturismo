@@ -111,8 +111,15 @@ button.btn {
     justify-content: center;
 }
 
+.cards-chisiamo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .card-body {
     background-color: #99BC85;
+    height: 30vh;
 }
 
 .static-contatti {

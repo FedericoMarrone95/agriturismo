@@ -89,7 +89,7 @@
 <hr>
 <table>
     <tr th:each="ordine : ${utente.ordini}">
-        <td th:text="${ordine.dataOraOrdine}"></td>
+        <td th:text="${#temporals.format(ordine.dataOraOrdine, 'dd/MM/yyyy HH:mm')}"></td>
         <td th:text="${ordine.importo}"></td>
         <td>
             <table>
