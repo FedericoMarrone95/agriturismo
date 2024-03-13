@@ -23,7 +23,7 @@ public class AdminTipologieController {
         Tipologia tipologia = id == null ? new Tipologia() : tipologiaService.getTipologiaById(id);
         model.addAttribute("tipologie", tipologie);
         model.addAttribute("tipologia", tipologia);
-        return null; //inserire la pagina html
+        return "admin-tipologie"; //inserire la pagina html
     }
     @PostMapping
     public String formManager(@ModelAttribute("tipologia") Tipologia tipologia){
