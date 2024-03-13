@@ -71,6 +71,7 @@
 <hr>
 <form th:object="${utente}" method="post">
     <input type="hidden" th:field="*{id}">
+    <input type="hidden" th:field="*{ordini}">
     <input type="text" th:field="*{nome}" placeholder="inserire nome" required>
     <p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
     <br>
