@@ -5,6 +5,45 @@
     <title>Title</title>
 </head>
 <body>
+<table>
+    <tr th:each="prodotto : ${prodotto}">
+
+        <td th:text="${prodotto.nome}"></td>
+        <td th:text="${prodotto.prezzo}"></td>
+        <td th:text="${prodotto.descrizione}"></td>
+        <td th:text="${prodotto.tipologia.nome}"></td>
+        <td th:text="${prodotto.scorte}"></td>
+
+        <td>
+            <a th:href="@{/adminprodotti(id=${prodotto.id})}">Modifica</a>
+            <a th:href="@{/adminprodotti/elimina(id=${prodotto.id})}">Elimina</a>
+        </td>
+    </tr>
+</table>
+<hr>
+    <form action="/adminprodotti" method="post" enctype="multipart/form-data">
+        <input type="text" name="nome" th:value="${prodotto.nome}" placeholder="Nome Prodotto" required>
+        <p th:if="${errori != null && errori.containsKey('nome')}" th:text="${errori.get('nome')}"></p>
+        <br>
+        <input type="number" name="prezzo" step=any th:value="${prodotto.prezzo}" placeholder="Prezzo Prodotto" required>
+        <p th:if="${errori != null && errori.containsKey('prodotto')}" th:value="${prodotto.prezzo}"></p>
+        <br>
+        <input type="text" name="descrizione" th:value="${prodotto.descrizione}" placeholder="Descrizione Prodotto" required>
+        <p th:if="${errori != null && errori.containsKey('descrizione')}" th:text="${errori.get('descrizione')}"></p>
+        <br>
+        <select>
+            <option th:each="tipologia: ${tipologie}" th:text="${tipologia.nome}" th:value="${tipologia.id}"
+                    th:selected="${prodotto.tipologia != null && prodotto.tipologia.id==tipologia.id}"
+            ></option>
+        </select>
+        <br>
+        <input type="number" name="scorte" th:value="${prodotto.scorte}" placeholder="Scorte Prodotto" required>
+        <p th:if="${errori != null && errori.containsKey('scorte')}" th:value="${prodotto.scorte}"></p>
+        <br>
+        <input type="file" name="immagine">
+        <br>
+        <input type="submit" value="Registra Prodotto">
+    </form>
 
 </body>
 </html>
