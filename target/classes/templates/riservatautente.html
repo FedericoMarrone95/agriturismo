@@ -46,9 +46,7 @@
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/riservatautente/logout}">Logout</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link"  th:href="@{/}">Torna in Home Page</a>
-                    </li>
+                    
                 </ul>
             </div>
         </div>
@@ -93,7 +91,7 @@
 <hr>
 <table>
     <tr th:each="ordine : ${utente.ordini}">
-        <td th:text="${ordine.data_ora_ordine}"></td>
+        <td th:text="${ordine.dataOraOrdine}"></td>
         <td th:text="${ordine.importo}"></td>
         <td>
             <table>
