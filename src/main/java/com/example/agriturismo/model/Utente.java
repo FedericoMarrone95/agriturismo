@@ -102,4 +102,12 @@ public class Utente {
         this.telefono = telefono;
         return this;
     }
+
+    public List<Ordine> getOrdini() {
+        return ordini;
+    }
+
+    public void setOrdini(List<Ordine> ordini) {
+        this.ordini = ordini;
+    }
 }
