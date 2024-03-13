@@ -29,7 +29,7 @@ h1{
     font-size: 60px;
 }
 nav.navbar.navbar-expand-lg.bg-body-tertiary {
-    background-color: green !important;
+    background-color: #41644A !important;
     position: fixed;
     width: 100%;
     top: 0;
@@ -73,4 +73,12 @@ main.registrati {
 
 form.form-login {
     width: 50% !important;
+}
+button.btn {
+    background-color: #41644A;
+    color: #fff;
+}
+.btn:hover{
+    background-color: #41644A;
+    color: #fff;
 }

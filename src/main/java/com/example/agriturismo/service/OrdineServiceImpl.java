@@ -23,12 +23,12 @@ public class OrdineServiceImpl implements OrdineService{
         Utente utente = (Utente) session.getAttribute("utente");
         if(carrello != null & utente != null){
             Ordine ordine = new Ordine();
-            ordine.setDataOraOrdine(LocalDate.now());
+            //ordine.setDataOraOrdine(LocalDate.now());
             ordine.setUtente(utente);
             ordine.setProdotti(carrello);
             ordine.setImporto(prodottoService.getTotaleCarrello(session));
             ordineDao.save(ordine);
-            utente.getOrdini().add(ordine);
+            //utente.getOrdini().add(ordine);
             session.setAttribute("utente", utente);
             session.removeAttribute("carrello");
         }
