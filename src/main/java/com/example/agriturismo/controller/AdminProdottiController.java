@@ -4,6 +4,7 @@ import com.example.agriturismo.model.Prodotto;
 import com.example.agriturismo.model.Tipologia;
 import com.example.agriturismo.service.ProdottoService;
 import com.example.agriturismo.service.TipologiaService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,6 +42,12 @@ public class AdminProdottiController {
         model.addAttribute("errori", errori);
         return "admin-prodotti";
 
+    }
+    @GetMapping("/logout")
+    public String adminLogout(HttpSession session)
+    {
+        session.removeAttribute("admin");
+        return "redirect:/";
     }
     @SuppressWarnings("unchecked")
     @PostMapping
