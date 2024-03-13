@@ -4,13 +4,12 @@
   width: 200px;
   height: auto;
   border: 1px solid;
-  margin-top: 55px;
+  margin-top: 50px;
 }
 
 .prodotti {
   position: absolute;
   left: 200px;
-  margin-top: 55px;
 }
 
 .primo-blocco{
@@ -30,22 +29,26 @@ h1{
     font-size: 60px;
 }
 nav.navbar.navbar-expand-lg.bg-body-tertiary {
-    background-color: green !important;
+    background-color: green;
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 10;
 }
+
 a.nav-link {
-    color: #fefefe !important;
+    color: #fefefe;
 }
+
 a.nav-link.active {
     color: #fff !important;
 }
+
 a.navbar-brand {
     color: #fff;
 }
+
 main.login {
     display: flex;
     height: 100vh !important;
@@ -56,6 +59,7 @@ main.login {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 main.registrati {
     display: flex;
     padding: 60px 0px !important;
@@ -66,6 +70,7 @@ main.registrati {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 form.form-login {
     width: 50% !important;
 }
