@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 <table>
-    <tr th:each="prodotto : ${prodotto}">
+    <tr th:each="prodotto : ${prodotti}">
 
         <td th:text="${prodotto.nome}"></td>
         <td th:text="${prodotto.prezzo}"></td>
         <td th:text="${prodotto.descrizione}"></td>
         <td th:text="${prodotto.tipologia.nome}"></td>
+        <td th:text="${prodotto.scorte}"></td>
 
         <td>
             <a th:href="@{/adminprodotti(id=${prodotto.id})}">Modifica</a>
@@ -36,9 +37,12 @@
             ></option>
         </select>
         <br>
+        <input type="number" name="scorte" th:value="${prodotto.scorte}" placeholder="Scorte Prodotto" required>
+        <p th:if="${errori != null && errori.containsKey('scorte')}" th:value="${prodotto.scorte}"></p>
+        <br>
         <input type="file" name="immagine">
         <br>
-        <input type="submit" value="Registra Libro">
+        <input type="submit" value="Registra Prodotto">
     </form>
 
 </body>
