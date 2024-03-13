@@ -8,4 +8,5 @@ import java.util.List;
 public interface OrdineService {
     void inviaOrdine(HttpSession session);
     List<Ordine> getOrdini();
+    Ordine getOrdineById(int id);
 }
