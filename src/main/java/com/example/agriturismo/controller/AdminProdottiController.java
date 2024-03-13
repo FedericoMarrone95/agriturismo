@@ -58,12 +58,12 @@ public class AdminProdottiController {
         {
             prodotto = (Prodotto) ((Object[])risultatoValidazione)[0];
             errori = (Map<String, String>) ((Object[])risultatoValidazione)[1];
-            return "redirect:/adminlibri";
+            return "redirect:/adminprodotti";
         }
         prodottoService.registraProdotto(prodotto, nome, descrizione, prezzo, scorte, idTipologia, immagine);
         prodotto = null;
         errori = null;
-        return "redirect:/adminlibri";
+        return "redirect:/adminprodotti";
     }
     @GetMapping("/elimina")
     public String eliminaProdotto(@RequestParam("id") int id){
