@@ -135,3 +135,6 @@ button.btn {
 .riservatau {
     margin-top: 50px;
 }
+.lista-prodotti{
+    flex-wrap: wrap;
+}
