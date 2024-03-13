@@ -71,6 +71,7 @@
 <hr>
 <form th:object="${utente}" method="post">
     <input type="hidden" th:field="*{id}">
+    <input type="hidden" th:field="*{ordini}">
     <input type="text" th:field="*{nome}" placeholder="inserire nome" required>
     <p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
     <br>
@@ -83,6 +84,15 @@
            id="pwd">
     <button type="button" onclick="mostra()">Mostra/Nascondi</button>
     <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+    <br>
+    <input type="text" th:field="*{indirizzo}" placeholder="inserire indirizzo" required>
+    <p th:if="${#fields.hasErrors('indirizzo')}" th:errors="*{indirizzo}"></p>
+    <br>
+    <input type="text" th:field="*{email}" placeholder="inserire email" required>
+    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+    <br>
+    <input type="text" th:field="*{telefono}" placeholder="inserire telefono" required>
+    <p th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></p>
     <br>
     <input type="submit" value="Modifica Dati">
 </form>
