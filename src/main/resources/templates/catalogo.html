@@ -74,8 +74,6 @@
                     <p th:text="${prodotto.tipologia.nome}" class="card-text"></p>
                     <p th:text="'Scorte: ' + ${prodotto.scorte}" class="card-text"></p>
                     <p th:text="'€: ' + ${#numbers.formatDecimal(prodotto.prezzo, 0, 'POINT', 2, 'COMMA')}" class="list-group-item"></p>
-                </div>
-                <div class="card-body">
                     <a th:href="@{/dettaglio(id=${prodotto.id})}" class="card-link">Dettaglio Prodotto</a>
                 </div>
             </div>
