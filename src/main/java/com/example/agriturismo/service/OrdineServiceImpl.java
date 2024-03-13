@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class OrdineServiceImpl implements OrdineService{
     @Autowired
@@ -41,5 +43,12 @@ public class OrdineServiceImpl implements OrdineService{
     public List<Ordine> getOrdini() {
         List<Ordine> ordini = (List<Ordine>) ordineDao.findAll();
         return ordini;
+    }
+    @Override
+    public Ordine getOrdineById(int id) {
+        Optional<Ordine> ordineOptional = ordineDao.findById(id);
+        if(ordineOptional.isPresent())
+            return ordineOptional.get();
+        return null;
     }
 }
