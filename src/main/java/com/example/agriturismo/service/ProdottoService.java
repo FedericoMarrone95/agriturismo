@@ -16,4 +16,5 @@ public interface ProdottoService {
     Object validaProdotto(Prodotto prodotto, String nome, String descrizione, String prezzo, String scorte, int idTipologia);
     void registraProdotto(Prodotto prodotto, String nome, String descrizione, String prezzo, String scorte, int idTipologia, MultipartFile immagine);
     void cancellaProdotto(int id);
+
 }

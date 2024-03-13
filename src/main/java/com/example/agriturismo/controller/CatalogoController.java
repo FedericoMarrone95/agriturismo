@@ -1,7 +1,9 @@
 package com.example.agriturismo.controller;
 
 import com.example.agriturismo.model.Prodotto;
+import com.example.agriturismo.model.Tipologia;
 import com.example.agriturismo.service.ProdottoService;
+import com.example.agriturismo.service.TipologiaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,5 +21,8 @@ public class CatalogoController {
         List<Prodotto> prodotti= prodottoService.getProdotti();
         model.addAttribute("prodotti", prodotti);
         return "catalogo";
+
+
     }
+
 }
