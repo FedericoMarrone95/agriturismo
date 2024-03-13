@@ -1,13 +1,9 @@
 .sidebar {
-  height: 100%;
-  width: 160px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  padding-top: 20px;
+  position: absolute;
+  left: auto;
+  width: 200px;
+  height: auto;
+  border: 1px solid;
 }
 
 .prodotti {
@@ -16,10 +12,35 @@
   padding: 0px 10px;
 }
 .primo-blocco{
-    height: 350px;
-    background-color: gray;
+    height: 450px;
+    background-image: url(../img/foto1.jpeg);
     padding-top: 100px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
 }
+.m-12{
+    margin-top: 50px;
+}
+h1{
+    font-size: 60px;
+}
+nav.navbar.navbar-expand-lg.bg-body-tertiary {
+    background-color: green;
+}
+a.nav-link {
+    color: #fefefe !important;
+}
+a.nav-link.active {
+    color: #fff !important;
+}
+a.navbar-brand {
+    color: #fff;
+    position: absolute;
+    left: 200px;
+}
+
 .m-12{
     margin-top: 50px;
 }
