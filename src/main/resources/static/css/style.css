@@ -119,6 +119,9 @@ button.btn {
 
 .card-body {
     background-color: #99BC85;
+}
+
+.card-height {
     height: 30vh;
 }
 
@@ -131,4 +134,7 @@ button.btn {
 
 .riservatau {
     margin-top: 50px;
+}
+.lista-prodotti{
+    flex-wrap: wrap;
 }

@@ -77,7 +77,7 @@
                 <br>
 
                 <div class="form-floating">
-                    <input type="file" name="immagine" class="form-control" id="floatingInput" required>
+                    <input type="file" name="immagine" class="form-control" id="floatingInput">
                     <label for="floatingInput">Scegli Immagine prodotto</label>
                 </div>
                 <br>
@@ -85,7 +85,7 @@
             </form>
         </div>
         <div class="col-12 col-md-6 m-12">
-            <div class="d-flex">
+            <div class="d-flex lista-prodotti">
                 <div th:each="prodotto : ${prodotti}" class="card" style="width: 18rem; margin-left: 20px;">
                     <img th:src="@{(${prodotto.immagine})}" class="card-img-top" alt="...">
                     <div class="card-body">
