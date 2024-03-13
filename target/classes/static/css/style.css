@@ -82,3 +82,23 @@ button.btn {
     background-color: #41644A;
     color: #fff;
 }
+
+.static-chisiamo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.subtdesign {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.cards-chisiamo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
