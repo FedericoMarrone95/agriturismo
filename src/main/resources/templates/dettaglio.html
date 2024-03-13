@@ -51,12 +51,12 @@
 <br>
 <img th:src="@{(${prodotto.immagine})}" alt="...">
 <ul>
-    <li th:text="'${prodotto.nome}"></li>
+    <li th:text="${prodotto.nome}"></li>
     <li th:text="'Modello: ' + ${prodotto.descrizione}"></li>
     <li th:text="'Scorte: ' + ${prodotto.scorte}"></li>
     <li th:text="'€: ' + ${#numbers.formatDecimal(prodotto.prezzo, 0, 'POINT', 2, 'COMMA')}"></li>
 </ul>
-<a th:href="@{/dettaglio/aggiungi(id=${articolo.id})}">Aggiungi al carrello</a>
+<a th:href="@{/dettaglio/aggiungi(id=${prodotto.id})}">Aggiungi al carrello</a>
 <p th:if="${result != null}"
    th:text="${result.equals('y') ? 'Articolo aggiunto con successo' : 'Articolo già presente in carrello'}"
    th:style="${result.equals('y') ? 'color:green' : 'color:red'}"></p>
