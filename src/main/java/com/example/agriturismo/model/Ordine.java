@@ -2,7 +2,7 @@ package com.example.agriturismo.model;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +14,7 @@ public class Ordine {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "data_ora_ordine")
-    private LocalDate dataOraOrdine;
+    private LocalDateTime dataOraOrdine;
     @Column
     private Double importo;
     @ManyToOne(cascade = CascadeType.REFRESH)
@@ -36,11 +36,11 @@ public class Ordine {
         this.id = id;
     }
 
-    public LocalDate getDataOraOrdine() {
+    public LocalDateTime getDataOraOrdine() {
         return dataOraOrdine;
     }
 
-    public void setDataOraOrdine(LocalDate dataOraOrdine) {
+    public void setDataOraOrdine(LocalDateTime dataOraOrdine) {
         this.dataOraOrdine = dataOraOrdine;
     }
 
