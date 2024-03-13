@@ -7,7 +7,6 @@
 }
 
 .prodotti {
-<<<<<<< Updated upstream
   margin-left: 160px; /* Same as the width of the sidenav */
   font-size: 28px; /* Increased text to enable scrolling */
   padding: 0px 10px;
@@ -38,18 +37,10 @@ a.nav-link.active {
 }
 a.navbar-brand {
     color: #fff;
-=======
-  position: absolute;
-  left: 200px;
-}
-
-.primo-blocco{
-    height: 350px;
-    background-color: gray;
-    padding-top: 100px;
+    position: absolute;
+    left: 200px;
 }
 
 .m-12{
     margin-top: 50px;
->>>>>>> Stashed changes
 }
