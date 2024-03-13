@@ -4,11 +4,13 @@
   width: 200px;
   height: auto;
   border: 1px solid;
+  margin-top: 55px;
 }
 
 .prodotti {
   position: absolute;
   left: 200px;
+  margin-top: 55px;
 }
 
 .primo-blocco{
