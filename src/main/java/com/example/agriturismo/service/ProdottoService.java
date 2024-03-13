@@ -10,7 +10,7 @@ public interface ProdottoService {
 
     Prodotto getProdottoById(int id);
 
-    Object validaProdotto(Prodotto prodotto, String nome, String descrizione, String prezzo, String scorte, int id_tipologia);
+    Object validaProdotto(Prodotto prodotto, String nome, String descrizione, String prezzo, String scorte, int idTipologia);
     void registraProdotto(Prodotto prodotto, String nome, String descrizione, String prezzo, String scorte, int idTipologia, MultipartFile immagine);
     void cancellaProdotto(int id);
 }
