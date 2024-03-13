@@ -57,28 +57,28 @@
         </div>
         <br>
         <div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="alert alert-danger" role="alert"></div>
-        <br>
+
         <div class="form-floating">
             <input type="text" th:field="*{cognome}" placeholder="inserire cognome" class="form-control" id="floatingInput" required>
             <label for="floatingInput">Cognome</label>
         </div>
         <br>
         <div th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}" class="alert alert-danger" role="alert"></div>
-        <br>
+
         <div class="form-floating">
             <input type="text" th:field="*{username}" placeholder="scegli username" class="form-control" id="floatingInput" required>
             <label for="floatingInput">Username</label>
         </div>
         <br>
         <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="alert alert-danger" role="alert"></div>
-        <br>
+
         <div class="form-floating">
             <input type="password" th:field="*{password}" placeholder="scegli password" class="form-control" id="floatingPassword" required>
             <label for="floatingPassword">Password</label>
         </div>
         <br>
         <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="alert alert-danger" role="alert"></div>
-        <br>
+        
         <div class="form-floating">
             <input type="text" th:field="*{indirizzo}" placeholder="inserisci indirizzo" class="form-control" id="floatingInput" required>
             <label for="floatingInput">Indirizzo</label>
