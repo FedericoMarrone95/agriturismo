@@ -78,7 +78,7 @@
         </div>
         <br>
         <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="alert alert-danger" role="alert"></div>
-        
+
         <div class="form-floating">
             <input type="text" th:field="*{indirizzo}" placeholder="inserisci indirizzo" class="form-control" id="floatingInput" required>
             <label for="floatingInput">Indirizzo</label>
