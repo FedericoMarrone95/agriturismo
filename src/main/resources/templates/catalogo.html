@@ -73,6 +73,7 @@
         <div class="card-body">
             <h5 th:text="${prodotto.nome}" class="card-title"></h5>
             <p th:text="${prodotto.tipologia.nome}" class="card-text"></p>
+            <p th:text="'Scorte: ' + ${prodotto.scorte}" class="card-text"></p>
             <p th:text="'€: ' + ${#numbers.formatDecimal(prodotto.prezzo, 0, 'POINT', 2, 'COMMA')}" class="list-group-item"></p>
         </div>
         <div class="card-body">
