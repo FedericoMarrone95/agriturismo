@@ -1,7 +1,9 @@
 package com.example.agriturismo.controller;
 
 import com.example.agriturismo.model.Prodotto;
+import com.example.agriturismo.model.Tipologia;
 import com.example.agriturismo.service.ProdottoService;
+import com.example.agriturismo.service.TipologiaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,8 @@ import java.util.Map;
 public class AdminProdottiController {
     @Autowired
     private ProdottoService prodottoService;
+    @Autowired
+    private TipologiaService tipologiaService;
     private Prodotto prodotto;
     private Map<String, String> errori;
     @GetMapping
@@ -27,10 +31,14 @@ public class AdminProdottiController {
         @RequestParam(name = "id", required = false) Integer id
     ){
         List<Prodotto> prodotti = prodottoService.getProdotti();
+        List<Tipologia> tipologie = tipologiaService.getTipologie();
         if(errori == null){
             prodotto = id == null ? new Prodotto() : prodottoService.getProdottoById(id);
         }
-        model.addAttribute("prodotto", prodotti);
+        model.addAttribute("prodotti", prodotti);
+        model.addAttribute("tipologie", tipologie);
+        model.addAttribute("prodotto", prodotto);
+        model.addAttribute("errori", errori);
         return "admin-prodotti";
 
     }
@@ -50,12 +58,12 @@ public class AdminProdottiController {
         {
             prodotto = (Prodotto) ((Object[])risultatoValidazione)[0];
             errori = (Map<String, String>) ((Object[])risultatoValidazione)[1];
-            return "redirect:/adminlibri";
+            return "redirect:/adminprodotti";
         }
         prodottoService.registraProdotto(prodotto, nome, descrizione, prezzo, scorte, idTipologia, immagine);
         prodotto = null;
         errori = null;
-        return "redirect:/adminlibri";
+        return "redirect:/adminprodotti";
     }
     @GetMapping("/elimina")
     public String eliminaProdotto(@RequestParam("id") int id){
