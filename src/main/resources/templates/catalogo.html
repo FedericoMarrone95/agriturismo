@@ -48,8 +48,13 @@
         </div>
     </div>
 </nav>
+<table>
+    <tr th:each="tipologia : ${tipologie}">
+        <td th:text="${tipologia.nome}">Tipologie</td>
+    </tr>
+</table>
 <div class="row m-12">
-    <div class="col-12 col-md-6 sidebar">
+     <div class="col-12 col-md-6 sidebar">
         <ul class="btn-toggle-nav">
             <li><a href="#" class="link-dark rounded">Pasta fatta in casa</a></li>
             <li><a href="#" class="link-dark rounded">Pane nostrano</a></li>
