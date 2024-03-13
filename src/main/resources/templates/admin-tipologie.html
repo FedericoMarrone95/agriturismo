@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestione Tipologie</title>
+</head>
+<body>
+<table>
+    <tr th:each="tipologia:${tipologie}">
+        <td th:text="${tipologia.nome}"></td>
+        <td>
+            <a th:href="@{/admintipologie(id=${tipologia.id})}">Modifica</a>
+
+            <button class="elimina" th:value="${tipologia.nome} + '@' + ${tipologia.id}">Elimina</button>
+        </td>
+    </tr>
+</table>
+<hr>
+<form th:object="${tipologia}" method="post">
+    <input type="text" th:field="*{nome}" placeholder="Nome Tipologia" required>
+    <br>
+    <input type="submit" value="Registra">
+</form>
+<script>
+    document.querySelectorAll('.elimina').forEach(function(button) {
+        button.addEventListener('click', function() {
+            let valore = this.getAttribute('value');
+            let dati = valore.split("@");
+            let conferma = confirm("Sei sicuro di voler cancellare questa tipoloiga " + dati[0]);
+            if(conferma)
+                window.location.href = "/admintipologie/elimina?id=" + dati[1];
+        });
+    });
+
+
+
+</script>
+
+</body>
+</html>
