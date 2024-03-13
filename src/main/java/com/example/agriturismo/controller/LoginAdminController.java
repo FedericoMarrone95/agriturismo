@@ -25,7 +25,7 @@ public class LoginAdminController
             Model model)
     {
         if(session.getAttribute("admin") != null)
-            return "redirect:/admin-prodotti";
+            return "redirect:/adminprodotti";
         model.addAttribute("errore", errore);
         return "loginadmin";
     }
@@ -39,6 +39,6 @@ public class LoginAdminController
     {
         if(!adminService.adminLogin(username,password,session))
             return "redirect:/loginadmin?errore";
-        return "redirect:/admin-prodotti";
+        return "redirect:/adminprodotti";
     }
 }
