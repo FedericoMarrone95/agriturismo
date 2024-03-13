@@ -35,13 +35,14 @@ public class AdminProdottiController {
 
     }
     @PostMapping
-    public String formManager(
+   public String formManager(
             @RequestParam("nome") String nome,
             @RequestParam("descrizione") String descrizione,
             @RequestParam("prezzo") String prezzo,
             @RequestParam("scorte") String scorte,
-            @RequestParam(name="immagine", required = false) MultipartFile immagine
-    ){
+            @RequestParam(name="immagine", required = false) MultipartFile immagine)
+    {
+
        
     }
 }
