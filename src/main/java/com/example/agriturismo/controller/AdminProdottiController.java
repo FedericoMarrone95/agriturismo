@@ -34,6 +34,7 @@ public class AdminProdottiController {
         return "admin-prodotti";
 
     }
+    @SuppressWarnings("unchecked")
     @PostMapping
     public String formManager(
             @RequestParam("nome") String nome,
@@ -55,5 +56,10 @@ public class AdminProdottiController {
         prodotto = null;
         errori = null;
         return "redirect:/adminlibri";
+    }
+    @GetMapping("/elimina")
+    public String eliminaProdotto(@RequestParam("id") int id){
+        prodottoService.cancellaProdotto(id);
+        return "redirect:/adminprodotti";
     }
 }

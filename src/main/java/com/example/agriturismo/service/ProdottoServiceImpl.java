@@ -72,4 +72,9 @@ public class ProdottoServiceImpl implements ProdottoService {
         prodottoDao.save(prodotto);
     }
 
+    @Override
+    public void cancellaProdotto(int id) {
+        prodottoDao.deleteById(id);
+    }
+
 }
