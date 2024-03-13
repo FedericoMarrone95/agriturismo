@@ -71,27 +71,27 @@
 
                 <div class="form-floating">
                     <input type="file" name="immagine" class="form-control" id="floatingInput" required>
-                    <label for="floatingInput">Immagine</label>
+                    <label for="floatingInput">Scegli Immagine prodotto</label>
                 </div>
                 <br>
                 <button class="btn btn-success w-100 py-2" type="submit">Registra Prodotto</button>
             </form>
         </div>
-        <div class="col-12 col-md-6 d-flex m-12">
-            <div th:each="prodotto : ${prodotti}" class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 th:text="${prodotto.nome}" class="card-title">Titolo</h5>
-                    <p td th:text="${prodotto.descrizione}" class="card-text"></p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li td th:text="${prodotto.prezzo}+' €'" class="list-group-item">prezzo</li>
-                    <li th:text="${prodotto.tipologia.nome}" class="list-group-item">tipologia</li>
-                    <li th:text="${prodotto.scorte}" class="list-group-item">scorte</li>
-                </ul>
-                <div class="card-body">
-                    <a th:href="@{/adminprodotti(id=${prodotto.id})}" class="card-link">Modifica</a>
-                    <a th:href="@{/adminprodotti/elimina(id=${prodotto.id})}" class="card-link">Elimina</a>
+        <div class="col-12 col-md-6 m-12">
+            <div class="d-flex">
+                <div th:each="prodotto : ${prodotti}" class="card" style="width: 18rem; margin-left: 20px;">
+                    <img th:src="@{(${prodotto.immagine})}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 th:text="${prodotto.nome}" class="card-title"></h5>
+                        <p th:text="${prodotto.tipologia.nome}" class="card-text"></p>
+                        <p th:text="'Scorte: ' + ${prodotto.scorte}" class="card-text"></p>
+                        <p th:text="${#numbers.formatDecimal(prodotto.prezzo, 0, 'POINT', 2, 'COMMA')}+' €'" class="list-group-item"></p>
+                    </div>
+                    <div class="card-body">
+                        <a th:href="@{/dettaglio(id=${prodotto.id})}" class="card-link">Dettaglio</a>
+                        <a th:href="@{/adminprodotti(id=${prodotto.id})}" class="card-link">Modifica</a>
+                        <a th:href="@{/adminprodotti/elimina(id=${prodotto.id})}" class="card-link">Elimina</a>
+                    </div>
                 </div>
             </div>
         </div>
