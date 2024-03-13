@@ -5,10 +5,12 @@ import com.example.agriturismo.model.Ordine;
 import com.example.agriturismo.model.Prodotto;
 import com.example.agriturismo.model.Utente;
 import jakarta.servlet.http.HttpSession;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 public class OrdineServiceImpl implements OrdineService{
@@ -24,7 +26,7 @@ public class OrdineServiceImpl implements OrdineService{
         Utente utente = (Utente) session.getAttribute("utente");
         if(carrello != null & utente != null){
             Ordine ordine = new Ordine();
-            ordine.setDataOraOrdine(LocalDate.now());
+            ordine.setDataOraOrdine(LocalDateTime.now());
             ordine.setUtente(utente);
             ordine.setProdotti(carrello);
             ordine.setImporto(prodottoService.getTotaleCarrello(session));
@@ -33,5 +35,11 @@ public class OrdineServiceImpl implements OrdineService{
             session.setAttribute("utente", utente);
             session.removeAttribute("carrello");
         }
+    }
+
+    @Override
+    public List<Ordine> getOrdini() {
+        List<Ordine> ordini = (List<Ordine>) ordineDao.findAll();
+        return ordini;
     }
 }

@@ -46,13 +46,15 @@
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/riservatautente/logout}">Logout</a>
                     </li>
-                    
+
                 </ul>
             </div>
         </div>
     </div>
 </nav>
-<h1 th:text="${utente.username} + ' questa è la tua area riservata'" class="riservatau"></h1>
+<a th:href="@{/}">Torna in Home Page</a>
+<a th:href="@{/riservatautente/logout}">Logout</a>
+<h1 th:text="${utente.username} + ' questa è la tua area riservata'"></h1>
 <h4 th:if="${carrello == null}">Non hai un carrello</h4>
 <table th:if="${carrello != null}">
     <tr th:each="prodotto : ${carrello}">

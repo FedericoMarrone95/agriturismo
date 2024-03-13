@@ -7,7 +7,99 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<a th:href="@{/}">Torna In Home Page</a>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" th:href="@{/}">Torna in Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" th:href="@{/adminprodotti}">Prodotti</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/admintipologie}">Aggiungi Tipologie</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row m-12">
+        <div class="col-12 col-md-6 m-12">
+            <form action="/adminprodotti" method="post" enctype="multipart/form-data" class="form-login">
+                <h1 class="h3 mb-3 fw-normal text-center">Modifica/Aggiungi Prodotto</h1>
+
+                <div class="form-floating">
+                    <input type="text" name="nome" th:value="${prodotto.nome}" placeholder="Nome Prodotto" class="form-control" id="floatingInput" required>
+                    <label for="floatingInput">Nome Prodotto</label>
+                </div>
+                <br>
+                <div th:if="${errori != null && errori.containsKey('nome')}" th:text="${errori.get('nome')}" class="alert alert-danger" role="alert"></div>
+
+                <div class="form-floating">
+                    <input type="number" name="prezzo" step=any th:value="${prodotto.prezzo}" placeholder="Prezzo Prodotto" class="form-control" id="floatingInput" required>
+                    <label for="floatingInput">Prezzo Prodotto</label>
+                </div>
+                <br>
+                <div th:if="${errori != null && errori.containsKey('prodotto')}" th:value="${prodotto.prezzo}" class="alert alert-danger" role="alert"></div>
+
+                <div class="form-floating">
+                    <input type="text" name="descrizione" th:value="${prodotto.descrizione}" placeholder="Descrizione Prodotto" class="form-control" id="floatingInput" required>
+                    <label for="floatingInput">Descrizione Prodotto</label>
+                </div>
+                <br>
+                <div th:if="${errori != null && errori.containsKey('descrizione')}" th:text="${errori.get('descrizione')}" class="alert alert-danger" role="alert"></div>
+
+                <select name="tipologia" class="form-select" aria-label="Default select example">
+                    <option selected>Scegli una tipologia</option>
+                    <option th:each="tipologia: ${tipologie}" th:text="${tipologia.nome}" th:value="${tipologia.id}"
+                            th:selected="${prodotto.tipologia != null && prodotto.tipologia.id==tipologia.id}"></option>
+                </select>
+
+                <br>
+
+                <div class="form-floating">
+                    <input type="number" name="scorte" th:value="${prodotto.scorte}" placeholder="Scorte Prodotto" class="form-control" id="floatingInput" required>
+                    <label for="floatingInput">Scorte Prodotto</label>
+                </div>
+                <div th:if="${errori != null && errori.containsKey('scorte')}" th:value="${prodotto.scorte}" class="alert alert-danger" role="alert"></div>
+                <br>
+
+                <div class="form-floating">
+                    <input type="file" name="immagine" class="form-control" id="floatingInput" required>
+                    <label for="floatingInput">Immagine</label>
+                </div>
+                <br>
+                <button class="btn btn-success w-100 py-2" type="submit">Registra Prodotto</button>
+            </form>
+        </div>
+        <div class="col-12 col-md-6 d-flex m-12">
+            <div th:each="prodotto : ${prodotti}" class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 th:text="${prodotto.nome}" class="card-title">Titolo</h5>
+                    <p td th:text="${prodotto.descrizione}" class="card-text"></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li td th:text="${prodotto.prezzo}+' €'" class="list-group-item">prezzo</li>
+                    <li th:text="${prodotto.tipologia.nome}" class="list-group-item">tipologia</li>
+                    <li th:text="${prodotto.scorte}" class="list-group-item">scorte</li>
+                </ul>
+                <div class="card-body">
+                    <a th:href="@{/adminprodotti(id=${prodotto.id})}" class="card-link">Modifica</a>
+                    <a th:href="@{/adminprodotti/elimina(id=${prodotto.id})}" class="card-link">Elimina</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--<a th:href="@{/}">Torna In Home Page</a>
 <table>
     <tr th:each="prodotto : ${prodotti}">
 
@@ -47,7 +139,7 @@
         <br>
         <input type="submit" value="Registra Prodotto">
     </form>
-    <a th:href="@{/admintipologie}">Crea Nuova Categoria</a>
+    <a th:href="@{/admintipologie}">Crea Nuova Categoria</a>-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/script.js"></script>
 </body>
