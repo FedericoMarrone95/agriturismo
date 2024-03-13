@@ -6,10 +6,11 @@ import com.example.agriturismo.model.Prodotto;
 import com.example.agriturismo.model.Utente;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-
+@Service
 public class OrdineServiceImpl implements OrdineService{
     @Autowired
     private OrdineDao ordineDao;
