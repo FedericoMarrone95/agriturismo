@@ -33,7 +33,7 @@
         <input type="text" name="descrizione" th:value="${prodotto.descrizione}" placeholder="Descrizione Prodotto" required>
         <p th:if="${errori != null && errori.containsKey('descrizione')}" th:text="${errori.get('descrizione')}"></p>
         <br>
-        <select>
+        <select name="tipologia">
             <option th:each="tipologia: ${tipologie}" th:text="${tipologia.nome}" th:value="${tipologia.id}"
                     th:selected="${prodotto.tipologia != null && prodotto.tipologia.id==tipologia.id}"
             ></option>
