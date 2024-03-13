@@ -67,7 +67,7 @@ public class RiservataUtenteController {
 
     @PostMapping
     public String formManager(
-            @Valid @ModelAttribute("user") Utente utente,
+            @Valid @ModelAttribute("utente") Utente utente,
             BindingResult result,
             HttpSession session
     )
