@@ -7,10 +7,10 @@
 }
 
 .prodotti {
-  margin-left: 160px; /* Same as the width of the sidenav */
-  font-size: 28px; /* Increased text to enable scrolling */
-  padding: 0px 10px;
+  position: absolute;
+  left: 200px;
 }
+
 .primo-blocco{
     height: 450px;
     background-image: url(../img/foto1.jpeg);
@@ -20,6 +20,7 @@
     background-size: cover;
     color: #fff;
 }
+
 .m-12{
     margin-top: 50px;
 }
@@ -37,10 +38,17 @@ a.nav-link.active {
 }
 a.navbar-brand {
     color: #fff;
-    position: absolute;
-    left: 200px;
 }
-
-.m-12{
-    margin-top: 50px;
+main.login {
+    display: flex;
+    height: 90vh !important;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../img/foto4.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+form.form-login {
+    width: 50% !important;
 }
