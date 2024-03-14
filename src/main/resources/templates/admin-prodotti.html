@@ -34,10 +34,10 @@
     </div>
 </nav>
 
-<div class="container">
+<div class="container-fluid">
     <div class="row m-12">
-        <div class="col-12 col-md-6 m-12">
-            <form action="/adminprodotti" method="post" enctype="multipart/form-data" class="form-login">
+        <div class="col-12 col-md-3 m-12">
+            <form action="/adminprodotti" method="post" enctype="multipart/form-data">
                 <h1 class="h3 mb-3 fw-normal text-center">Modifica/Aggiungi Prodotto</h1>
 
                 <div class="form-floating">
@@ -84,7 +84,7 @@
                 <button class="btn btn-success w-100 py-2" type="submit">Registra Prodotto</button>
             </form>
         </div>
-        <div class="col-12 col-md-6 m-12">
+        <div class="col-12 col-md-9 m-12">
             <div class="d-flex lista-prodotti">
                 <div th:each="prodotto : ${prodotti}" class="card" style="width: 18rem; margin-left: 20px;">
                     <img th:src="@{(${prodotto.immagine})}" class="card-img-top" alt="...">
@@ -104,49 +104,6 @@
         </div>
     </div>
 </div>
-
-
-<!--<a th:href="@{/}">Torna In Home Page</a>
-<table>
-    <tr th:each="prodotto : ${prodotti}">
-
-        <td th:text="${prodotto.nome}"></td>
-        <td th:text="${prodotto.prezzo}"></td>
-        <td th:text="${prodotto.descrizione}"></td>
-        <td th:text="${prodotto.tipologia.nome}"></td>
-        <td th:text="${prodotto.scorte}"></td>
-
-        <td>
-            <a th:href="@{/adminprodotti(id=${prodotto.id})}">Modifica</a>
-            <a th:href="@{/adminprodotti/elimina(id=${prodotto.id})}">Elimina</a>
-        </td>
-    </tr>
-</table>
-<hr>
-    <form action="/adminprodotti" method="post" enctype="multipart/form-data">
-        <input type="text" name="nome" th:value="${prodotto.nome}" placeholder="Nome Prodotto" required>
-        <p th:if="${errori != null && errori.containsKey('nome')}" th:text="${errori.get('nome')}"></p>
-        <br>
-        <input type="number" name="prezzo" step=any th:value="${prodotto.prezzo}" placeholder="Prezzo Prodotto" required>
-        <p th:if="${errori != null && errori.containsKey('prodotto')}" th:value="${prodotto.prezzo}"></p>
-        <br>
-        <input type="text" name="descrizione" th:value="${prodotto.descrizione}" placeholder="Descrizione Prodotto" required>
-        <p th:if="${errori != null && errori.containsKey('descrizione')}" th:text="${errori.get('descrizione')}"></p>
-        <br>
-        <select name="tipologia">
-            <option th:each="tipologia: ${tipologie}" th:text="${tipologia.nome}" th:value="${tipologia.id}"
-                    th:selected="${prodotto.tipologia != null && prodotto.tipologia.id==tipologia.id}"
-            ></option>
-        </select>
-        <br>
-        <input type="number" name="scorte" th:value="${prodotto.scorte}" placeholder="Scorte Prodotto" required>
-        <p th:if="${errori != null && errori.containsKey('scorte')}" th:value="${prodotto.scorte}"></p>
-        <br>
-        <input type="file" name="immagine">
-        <br>
-        <input type="submit" value="Registra Prodotto">
-    </form>
-    <a th:href="@{/admintipologie}">Crea Nuova Categoria</a>-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/script.js"></script>
 </body>
