@@ -61,6 +61,7 @@
                 <div class="number">1</div>
                 <button class="btn" onclick="qty('less')">-</button>
             </div>
+            <br>
             <p th:text="'Tipologia: '+${prodotto.tipologia.nome}">Tipologia</p>
             <br>
             <h4 th:text="${#numbers.formatDecimal(prodotto.prezzo, 1, 'POINT', 2, 'COMMA')}+'€'">Prezzo</h4>
