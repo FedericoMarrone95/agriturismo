@@ -54,7 +54,7 @@
     <li th:text="${prodotto.nome}"></li>
     <li th:text="'Modello: ' + ${prodotto.descrizione}"></li>
     <li th:text="'Scorte: ' + ${prodotto.scorte}"></li>
-    <li th:text="'€: ' + ${#numbers.formatDecimal(prodotto.prezzo, 0, 'POINT', 2, 'COMMA')}"></li>
+    <li th:text="'€: ' + ${#numbers.formatDecimal(prodotto.prezzo, 1, 'POINT', 2, 'COMMA')}"></li>
 </ul>
 <a th:href="@{/dettaglio/aggiungi(id=${prodotto.id})}">Aggiungi al carrello</a>
 <p th:if="${result != null}"

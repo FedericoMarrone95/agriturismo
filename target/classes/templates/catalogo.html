@@ -75,7 +75,7 @@
                         <h5 th:text="${prodotto.nome}" class="card-title"></h5>
                         <p th:text="${prodotto.tipologia.nome}" class="card-text"></p>
                         <p th:text="'Scorte: ' + ${prodotto.scorte}" class="card-text"></p>
-                        <p th:text="${#numbers.formatDecimal(prodotto.prezzo, 0, 'POINT', 2, 'COMMA')}+' €'" class="list-group-item"></p>
+                        <p th:text="${#numbers.formatDecimal(prodotto.prezzo, 1, 'POINT', 2, 'COMMA')}+' €'" class="list-group-item"></p>
                     </div>
                     <div class="card-body">
                         <button type="button" class="btn btn-success"><a th:href="@{/dettaglio(id=${prodotto.id})}" class="text-light">Visualizza Prodotto</a></button>
