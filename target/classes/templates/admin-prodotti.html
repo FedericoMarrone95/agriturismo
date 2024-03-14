@@ -18,10 +18,10 @@
                     <a class="nav-link" aria-current="page" th:href="@{/}">Torna in Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" th:href="@{/adminprodotti}">Prodotti</a>
+                    <a class="nav-link active" th:href="@{/adminprodotti}">Area Prodotti</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/admintipologie}">Aggiungi Tipologie</a>
+                    <a class="nav-link" th:href="@{/admintipologie}">Area Tipologie</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/adminutentiordinativi}">Area Ordini</a>
@@ -61,12 +61,11 @@
                 <br>
                 <div th:if="${errori != null && errori.containsKey('descrizione')}" th:text="${errori.get('descrizione')}" class="alert alert-danger" role="alert"></div>
 
-                <select name="tipologia" class="form-select" aria-label="Default select example">
-                    <option selected>Scegli una tipologia</option>
+                <select name="tipologia" class="form-select" aria-label="Default select example" required>
+                    <option value="" disabled selected hidden>Scegli una tipologia</option>
                     <option th:each="tipologia: ${tipologie}" th:text="${tipologia.nome}" th:value="${tipologia.id}"
                             th:selected="${prodotto.tipologia != null && prodotto.tipologia.id==tipologia.id}"></option>
                 </select>
-
                 <br>
 
                 <div class="form-floating">
