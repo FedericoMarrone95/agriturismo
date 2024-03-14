@@ -61,8 +61,8 @@
                 <br>
                 <div th:if="${errori != null && errori.containsKey('descrizione')}" th:text="${errori.get('descrizione')}" class="alert alert-danger" role="alert"></div>
 
-                <select name="tipologia" class="form-select" aria-label="Default select example">
-                    <option selected>Scegli una tipologia</option>
+                <select name="tipologia" class="form-select" aria-label="Default select example" required>
+                    <option value="" disabled selected hidden>Scegli una tipologia</option>
                     <option th:each="tipologia: ${tipologie}" th:text="${tipologia.nome}" th:value="${tipologia.id}"
                             th:selected="${prodotto.tipologia != null && prodotto.tipologia.id==tipologia.id}"></option>
                 </select>
