@@ -69,7 +69,7 @@
                 <br>
 
                 <div class="form-floating">
-                    <input type="number" name="scorte" id ="s" th:value="${prodotto.scorte}" placeholder="Scorte Prodotto" class="form-control" required>
+                    <input type="number" name="scorte" id ="s" min = "0" th:value="${prodotto.scorte}" placeholder="Scorte Prodotto" class="form-control" required>
                     <label for="floatingInput">Scorte Prodotto</label>
                 </div>
                 <div th:if="${errori != null && errori.containsKey('scorte')}" th:value="${prodotto.scorte}" class="alert alert-danger" role="alert"></div>
