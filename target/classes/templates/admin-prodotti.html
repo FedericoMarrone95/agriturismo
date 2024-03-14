@@ -66,7 +66,6 @@
                     <option th:each="tipologia: ${tipologie}" th:text="${tipologia.nome}" th:value="${tipologia.id}"
                             th:selected="${prodotto.tipologia != null && prodotto.tipologia.id==tipologia.id}"></option>
                 </select>
-
                 <br>
 
                 <div class="form-floating">
