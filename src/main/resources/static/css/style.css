@@ -2,7 +2,6 @@
   position: absolute;
   left: auto;
   width: 200px;
-  height: auto;
   border: 1px solid;
   margin-top: 50px;
 }
@@ -136,10 +135,18 @@ button.btn {
 }
 .lista-prodotti{
     flex-wrap: wrap;
+    margin-bottom: 30px
 }
 .pad-top-50{
     padding-top: 70px;
 }
 .side-bg{
     background-color: #99BC85 !important;
+    height: 100vw;
+}
+h5.card-title {
+    font-size: 30px;
+}
+p.list-group-item {
+    font-size: 25px;
 }
