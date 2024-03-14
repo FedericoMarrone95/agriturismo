@@ -66,13 +66,13 @@
         <tbody>
         <tr th:each="prodotto : ${carrello}">
             <td th:text="${prodotto.nome}">Titolo</td>
-            <td th:text="${prodotto.prezzo}">Prezzo</td>
+            <td th:text="${#numbers.formatDecimal(prodotto.prezzo, 1, 'POINT', 2, 'COMMA')} + ' €'">Prezzo</td>
             <td><a th:href="@{/riservatautente/rimuovi(id=${prodotto.id})}">Rimuovi Prodotto</a></td>
         </tr>
         </tbody>
     </table>
     <br>
-    <h5 th:if="${carrello != null}" th:text="'Totale Carrello ' + ${totale} + ' €'"></h5>
+    <h5 th:if="${carrello != null}" th:text="'Totale Carrello ' + ${#numbers.formatDecimal(totale, 1, 'POINT', 2, 'COMMA')} + ' €'"></h5>
     <br>
     <a class="text-light" th:href="@{/catalogo}"><button th:if="${carrello != null}" type="button" class="btn btn-success">Continua ad acquistare</button></a>
 
@@ -95,7 +95,7 @@
         <tbody>
         <tr th:each="ordine : ${utente.ordini}">
             <td th:text="${#temporals.format(ordine.dataOraOrdine, 'dd/MM/yyyy HH:mm')}"></td>
-            <td th:text="${ordine.importo}+'€'">Prezzo</td>
+            <td th:text="${#numbers.formatDecimal(ordine.importo, 1, 'POINT', 2, 'COMMA')}+' €'">Prezzo</td>
             <td>
                 <table>
                     <tr th:each="prodotto : ${ordine.prodotti}">
