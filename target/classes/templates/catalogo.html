@@ -79,11 +79,7 @@
                     </div>
                     <div class="card-body">
                         <button type="button" class="btn btn-success"><a th:href="@{/dettaglio(id=${prodotto.id})}" class="text-light">Visualizza Prodotto</a></button>
-                        <a class="link-light" th:href="@{/catalogo(id=${prodotto.id})}"><button type="button" class="btn btn-success">Aggiungi al carrello</button></a>
-                        <div th:if="${result != null}"
-                             th:text="${result.equals('y') ? 'Articolo aggiunto con successo' : 'Articolo già presente in carrello'}"
-                             th:style="${result.equals('y') ? 'color:green' : 'color:red'}" class="alert" role="alert">
-                        </div>
+
                     </div>
                 </div>
             </div>

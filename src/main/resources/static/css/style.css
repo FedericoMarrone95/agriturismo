@@ -26,6 +26,7 @@
 }
 h1{
     font-size: 60px;
+    font-family: Didot;
 }
 nav.navbar.navbar-expand-lg.bg-body-tertiary {
     background-color: #41644A !important;
@@ -122,7 +123,21 @@ button.btn {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: Didot;
+}
 
+.subtitle {
+    font-family: Didot;
+}
+
+.pdesign {
+    font-family: Didot;
+}
+
+.tdesign {
+    text-decoration: underline;
+    font-weight: bold;
+    font-style: italic;
 }
 
 .static-text {
@@ -135,13 +150,16 @@ button.btn {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
-/*.card-body {
-    background-color: #99BC85;
-}*/
+.past {
+    background-color: #F2E3DB !important;
+}
 
-.card-height {
+.present {
+    background-color: #789461 !important;
 }
 
 .static-contatti {
