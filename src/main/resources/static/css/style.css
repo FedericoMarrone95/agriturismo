@@ -150,3 +150,6 @@ h5.card-title {
 p.list-group-item {
     font-size: 25px;
 }
+a {
+    text-decoration: none;
+}

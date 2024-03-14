@@ -38,12 +38,6 @@
                         <a><img src="img/shopping-cart.png" width="22" alt=""></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/loginutente}">Accedi</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/registrazioneutente}">Registrati</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" th:href="@{/riservatautente/logout}">Logout</a>
                     </li>
 
@@ -52,24 +46,120 @@
         </div>
     </div>
 </nav>
-<h1 th:text="${utente.username} + ' questa è la tua area riservata'" class="riservatau"></h1>
-<h4 th:if="${carrello == null}">Non hai un carrello</h4>
-<table th:if="${carrello != null}">
-    <tr th:each="prodotto : ${carrello}">
-        <td th:text="${prodotto.nome}"></td>
-        <td th:text="${prodotto.prezzo}"></td>
-        <td>
-            <a th:href="@{/riservatautente/rimuovi(id=${prodotto.id})}">
-                Rimuovi Prodotto
-            </a>
-        </td>
-    </tr>
-</table>
-<h5 th:if="${carrello != null}" th:text="'Totale Carrello ' + ${totale}"></h5>
-<a th:if="${carrello != null}" th:href="@{/riservatautente/invia}">Invia Ordine</a>
-<p th:if="${send}">Ordine Inviato</p>
-<hr>
-<form th:object="${utente}" method="post">
+<div class="container" style="margin-bottom: 50px">
+    <h1 th:text="'Ciao ' + ${utente.username}" class="riservatau"></h1>
+    <h2>questa è la tua area riservata</h2>
+    <hr>
+    <br>
+    <h4 th:if="${carrello == null}">Il tuo carrello è vuoto</h4>
+    <h4 th:if="${carrello != null}">Il tuo carrello</h4>
+    <a class="text-light" th:href="@{/catalogo}"><button th:if="${carrello == null}" type="button" class="btn btn-success">Vai al nostro catalogo</button></a>
+    <!--TABELLA CARRELLO-->
+    <table th:if="${carrello != null}" class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">Titolo</th>
+            <th scope="col">Prezzo</th>
+            <th scope="col">Rimuovi</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="prodotto : ${carrello}">
+            <td th:text="${prodotto.nome}">Titolo</td>
+            <td th:text="${prodotto.prezzo}">Prezzo</td>
+            <td><a th:href="@{/riservatautente/rimuovi(id=${prodotto.id})}">Rimuovi Prodotto</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+    <h5 th:if="${carrello != null}" th:text="'Totale Carrello ' + ${totale} + ' €'"></h5>
+    <br>
+    <a class="text-light" th:href="@{/catalogo}"><button th:if="${carrello != null}" type="button" class="btn btn-success">Continua ad acquistare</button></a>
+
+    <a class="text-light" th:href="@{/riservatautente/invia}"><button th:if="${carrello != null}" type="button" class="btn btn-success">Acquista</button></a>
+    <br>
+    <div th:if="${send}" class="alert alert-success" role="alert">
+        Ordine inviato con successo. Grazie!
+    </div>
+    <hr>
+    <!--TABELLA LISTA ORDINI-->
+    <h4>Lista dei tuoi ordini</h4>
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">Data</th>
+            <th scope="col">Importo</th>
+            <th scope="col">Prodotto/i</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ordine : ${utente.ordini}">
+            <td th:text="${#temporals.format(ordine.dataOraOrdine, 'dd/MM/yyyy HH:mm')}"></td>
+            <td th:text="${ordine.importo}+'€'">Prezzo</td>
+            <td>
+                <table>
+                    <tr th:each="prodotto : ${ordine.prodotti}">
+                        <td th:text="${prodotto.nome}"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <!--FORM MODIFICA DATI CLIENTI-->
+    <h4>I tuoi dati</h4>
+    <hr>
+    <form th:object="${utente}" method="post" class="form-login">
+        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="*{ordini}">
+        <div class="form-floating">
+            <input type="text" th:field="*{nome}" placeholder="inserire nome" class="form-control" id="floatingInput" required>
+            <label for="floatingInput">Nome</label>
+        </div>
+        <br>
+        <div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="alert alert-danger" role="alert"></div>
+
+        <div class="form-floating">
+            <input type="text" th:field="*{cognome}" placeholder="inserire cognome" class="form-control" id="floatingInput" required>
+            <label for="floatingInput">Cognome</label>
+        </div>
+        <br>
+        <div th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}" class="alert alert-danger" role="alert"></div>
+
+        <div class="form-floating">
+            <input type="text" th:field="*{username}" class="form-control" id="floatingInput" readonly>
+            <label for="floatingInput">Username</label>
+        </div>
+        <br>
+
+        <div class="form-floating">
+            <input type="text" th:field="*{password}" placeholder="scegli password" id="pwd" class="form-control" required>
+            <label>Password</label>
+            <button type="button" onclick="mostra()">Mostra/Nascondi</button>
+        </div>
+        <br>
+        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="alert alert-danger" role="alert"></div>
+
+        <div class="form-floating">
+            <input type="text" th:field="*{indirizzo}" placeholder="inserisci indirizzo" class="form-control" id="floatingInput" required>
+            <label for="floatingInput">Indirizzo</label>
+        </div>
+        <br>
+        <div class="form-floating">
+            <input type="text" th:field="*{email}" placeholder="inserisci email" class="form-control" id="floatingInput" required>
+            <label for="floatingInput">Email</label>
+        </div>
+        <br>
+        <div class="form-floating">
+            <input type="number" th:field="*{telefono}" placeholder="inserisci telefono" class="form-control" id="floatingInput" required>
+            <label for="floatingInput">Telefono</label>
+        </div>
+        <br>
+        <button class="btn btn-success w-100 py-2" type="submit">Modifica Dati</button>
+    </form>
+</div>
+
+<!--<form th:object="${utente}" method="post">
     <input type="hidden" th:field="*{id}">
     <input type="hidden" th:field="*{ordini}">
     <input type="text" th:field="*{nome}" placeholder="inserire nome" required>
@@ -95,21 +185,8 @@
     <p th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></p>
     <br>
     <input type="submit" value="Modifica Dati">
-</form>
-<hr>
-<table>
-    <tr th:each="ordine : ${utente.ordini}">
-        <td th:text="${#temporals.format(ordine.dataOraOrdine, 'dd/MM/yyyy HH:mm')}"></td>
-        <td th:text="${ordine.importo}"></td>
-        <td>
-            <table>
-                <tr th:each="prodotto : ${ordine.prodotti}">
-                    <td th:text="${prodotto.nome}"></td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
+</form>-->
+
 <script>
     document.addEventListener("DOMContentLoaded", function(){
         var pwd = document.getElementById("pwd");
