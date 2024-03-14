@@ -8,10 +8,19 @@
 </head>
 <body>
     <table>
+        <tr th:each = "utente : ${utenti}">
+            <td th:text="'User: ' + ${utente.username}"></td>
+            <td th:text="'Nome: ' + ${utente.nome} + ' ' + ${utente.cognome}"></td>
+            <td th:text="'Indirizzo: ' + ${utente.indirizzo}"></td>
+            <td th:text="'Email: ' + ${utente.email}"></td>
+            <td th:text="'Telefono: ' + ${utente.telefono}"></td>
+        </tr>
+    </table>
+    <table>
         <tr th:each="ordine : ${ordini}">
             <td th:text="'Importo: ' + ${#numbers.formatDecimal(ordine.importo, 1, 'POINT', 2, 'COMMA')} + ' €'"></td>
             <td th:text="'Data e ora: ' + ${#temporals.format(ordine.dataOraOrdine, 'dd/MM/yyyy HH:mm')}"></td>
-            <td th:text="'Utente: ' + ${ordine.utente.nome} + ' ' + ${ordine.utente.cognome}"></td>
+            <td th:text="'Utente: ' + ${ordine.utente.username}"></td>
             <!--<td th:text="${ordine.utente.email}"></td>
             <td th:text="${ordine.utente.telefono}"></td>
             <td th:text="${ordine.utente.indirizzo}"></td>-->
