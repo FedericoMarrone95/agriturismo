@@ -40,11 +40,32 @@ a.nav-link {
     color: #fefefe;
 }
 
+a.nav-linkf {
+    color: #fefefe;
+}
+
+a.nav-link:hover {
+    background-color: #294B29 !important;
+}
+
 a.nav-link.active {
     color: #fff !important;
 }
 
+a.nav-linkf.active {
+    color: #fff !important;
+}
+
 a.navbar-brand {
+    color: #fff;
+}
+
+a:hover {
+    color: #99BC85 !important;
+}
+
+footer.py-5.static-footer {
+    background-color: #41644A !important;
     color: #fff;
 }
 
@@ -94,7 +115,7 @@ button.btn {
     flex-direction: column;
     align-items: center;
     margin-top: 50px;
-    background-color: #D7E4C0;
+    background-color: #99BC85;
 }
 
 .subdesign {
