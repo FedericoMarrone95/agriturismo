@@ -159,6 +159,10 @@ public class ProdottoServiceImpl implements ProdottoService {
         prodottoDao.deleteById(id);
     }
 
+    @Override
+    public List<Prodotto> getProdottiByTipologia(int idTipologia) {
+        return prodottoDao.findByTipologiaId(idTipologia);
+    }
 
 
 }

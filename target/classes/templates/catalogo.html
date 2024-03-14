@@ -9,6 +9,8 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+
     <div class="container-fluid">
         <a class="navbar-brand" th:href="@{/}">Agriturismo</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,23 +50,21 @@
         </div>
     </div>
 </nav>
-<table>
-    <tr th:each="tipologia : ${tipologie}">
-        <td th:text="${tipologia.nome}">Tipologie</td>
-    </tr>
-</table>
+
 <div class="row m-12">
-     <div class="col-12 col-md-6 sidebar">
+    <div class="col-12 col-md-6 sidebar">
         <ul class="btn-toggle-nav">
-            <li><a href="#" class="link-dark rounded">Pasta fatta in casa</a></li>
-            <li><a href="#" class="link-dark rounded">Pane nostrano</a></li>
-            <li><a href="#" class="link-dark rounded">Salumi e insaccati</a></li>
-            <li><a href="#" class="link-dark rounded">Formaggi caserecci</a></li>
-            <li><a href="#" class="link-dark rounded">Frutta e verdura</a></li>
-            <li><a href="#" class="link-dark rounded">Miele e confettura</a></li>
-            <li><a href="#" class="link-dark rounded">Vini artigianali</a></li>
+            <li th:each="tipologia : ${tipologie}">
+                <a th:href="@{/catalogo(tipologiaId=${tipologia.id})}" class="link-dark rounded" th:text="${tipologia.nome}">Tipologia</a>
+            </li>
+            <a th:href="@{/catalogo}" class="link-dark">Azzera Filtri</a>
+
+
         </ul>
+
+
     </div>
+
     <div class="col-12 col-md-6 m-12">
         <div class="d-flex prodotti">
             <div th:each="prodotto : ${prodotti}" class="card" style="width: 18rem; margin-left: 20px;">
@@ -80,6 +80,7 @@
         </div>
     </div>
 </div>
+
 <!--<div class="sidebar">
     <ul class="list-unstyled">
         <li>
