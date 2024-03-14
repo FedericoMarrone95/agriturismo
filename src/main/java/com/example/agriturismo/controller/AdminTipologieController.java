@@ -2,6 +2,7 @@ package com.example.agriturismo.controller;
 
 import com.example.agriturismo.model.Tipologia;
 import com.example.agriturismo.service.TipologiaService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,9 +17,11 @@ public class AdminTipologieController {
     private TipologiaService tipologiaService;
 
     @GetMapping
-    public String getPage(Model model,
+    public String getPage(Model model, HttpSession session,
                           @RequestParam(name="id", required = false) Integer id)
     {
+        if(session.getAttribute("admin") == null)
+            return "redirect:/loginadmin";
         List<Tipologia> tipologie = tipologiaService.getTipologie();
         Tipologia tipologia = id == null ? new Tipologia() : tipologiaService.getTipologiaById(id);
         model.addAttribute("tipologie", tipologie);

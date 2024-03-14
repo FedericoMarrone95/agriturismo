@@ -28,9 +28,11 @@ public class AdminProdottiController {
     private Map<String, String> errori;
     @GetMapping
     public String getPage(
-        Model model,
+        Model model, HttpSession session,
         @RequestParam(name = "id", required = false) Integer id
     ){
+        if(session.getAttribute("admin") == null)
+            return "redirect:/loginadmin";
         List<Prodotto> prodotti = prodottoService.getProdotti();
         List<Tipologia> tipologie = tipologiaService.getTipologie();
         if(errori == null){
