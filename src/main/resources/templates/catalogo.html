@@ -50,8 +50,39 @@
         </div>
     </div>
 </nav>
-
-<div class="row m-12">
+<!--SIDEBAR TIPOLOGIE-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-md-2 pad-top-50 side-bg">
+            <h3 class="text-light">Filtra per Tipologie</h3>
+            <ul class="btn-toggle-nav">
+                <li class="list-group-item">
+                    <a th:href="@{/catalogo}" class="link-light">Tutti i prodotti</a>
+                </li>
+                <li th:each="tipologia : ${tipologie}" class="list-group-item">
+                    <a th:href="@{/catalogo(tipologiaId=${tipologia.id})}" class="link-light rounded" th:text="${tipologia.nome}">Tipologia</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-12 col-md-10 m-12">
+            <div class="d-flex lista-prodotti">
+                <div th:each="prodotto : ${prodotti}" class="card mt-3" style="width: 18rem; margin-left: 20px;">
+                    <img th:src="@{(${prodotto.immagine})}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 th:text="${prodotto.nome}" class="card-title"></h5>
+                        <p th:text="${prodotto.tipologia.nome}" class="card-text"></p>
+                        <p th:text="'Scorte: ' + ${prodotto.scorte}" class="card-text"></p>
+                        <p th:text="${#numbers.formatDecimal(prodotto.prezzo, 0, 'POINT', 2, 'COMMA')}+' €'" class="list-group-item"></p>
+                    </div>
+                    <div class="card-body">
+                        <a th:href="@{/dettaglio(id=${prodotto.id})}" class="card-link">Dettaglio</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div class="row m-12">
     <div class="col-12 col-md-6 sidebar">
         <ul class="btn-toggle-nav">
             <li th:each="tipologia : ${tipologie}">
@@ -79,42 +110,9 @@
             </div>
         </div>
     </div>
-</div>
-
-<!--<div class="sidebar">
-    <ul class="list-unstyled">
-        <li>
-            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-                Catalogo
-            </button>
-            <div class="collapse show" id="home-collapse">
-                <ul class="btn-toggle-nav">
-                    <li><a href="#" class="link-dark rounded">Pasta fatta in casa</a></li>
-                    <li><a href="#" class="link-dark rounded">Pane nostrano</a></li>
-                    <li><a href="#" class="link-dark rounded">Salumi e insaccati</a></li>
-                    <li><a href="#" class="link-dark rounded">Formaggi caserecci</a></li>
-                    <li><a href="#" class="link-dark rounded">Frutta e verdura</a></li>
-                    <li><a href="#" class="link-dark rounded">Miele e confettura</a></li>
-                    <li><a href="#" class="link-dark rounded">Vini artigianali</a></li>
-                </ul>
-            </div>
-        </li>
-    </ul>
-</div>
-<div class="d-flex prodotti">
-    <div th:each="prodotto : ${prodotti}" class="card" style="width: 18rem; margin-left: 20px;">
-        <img th:src="@{(${prodotto.immagine})}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 th:text="${prodotto.nome}" class="card-title"></h5>
-            <p th:text="${prodotto.tipologia.nome}" class="card-text"></p>
-            <p th:text="'Scorte: ' + ${prodotto.scorte}" class="card-text"></p>
-            <p th:text="'€: ' + ${#numbers.formatDecimal(prodotto.prezzo, 0, 'POINT', 2, 'COMMA')}" class="list-group-item"></p>
-        </div>
-        <div class="card-body">
-            <a th:href="@{/dettaglio(id=${prodotto.id})}" class="card-link">Dettaglio Prodotto</a>
-        </div>
-    </div>
 </div>-->
+
+
 <script src="js/script.js"></script>
 </body>
 </html>
