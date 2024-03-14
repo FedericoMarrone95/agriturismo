@@ -107,7 +107,7 @@
 document.addEventListener("DOMContentLoaded", function(){
 var prezzo = document.getElementById("p");
 var scorte = document.getElementById("s");
-if (prezzo.value==='' || prezzo.value === '0' || prezzo.value === '0.0'){
+if (prezzo.value==='' || prezzo.value === 0 || prezzo.value === '0.0'){
     prezzo.value= '';
 }
 if(scorte.value=== '' || scorte.value === '0'){

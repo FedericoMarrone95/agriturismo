@@ -37,33 +37,19 @@ public class ProdottoServiceImpl implements ProdottoService {
     @Override
     public boolean aggiungiACarrello(int id, HttpSession session)
     {
-        // recuperiamo il prodotto che si vuole aggiungere
         Prodotto prodotto = getProdottoById(id);
-        // capiamo se l'utente ha già un carrello oppure no
-        List<Prodotto> carrello;
-        if(session.getAttribute("carrello") != null) // lo ha già
-        {
-            // recuperiamo il carrello salvato in sessione
-            carrello = (List<Prodotto>) session.getAttribute("carrello");
-            // capiamo se il prodotto da acquistare è già nel carrello
-            for(Prodotto p : carrello)
-                if(p.getId() == id)
-                    return false;
-            // se il prodotto non è già presente, lo aggiungiamo
-            carrello.add(prodotto);
-            // sovrascriviamo il valore del carrello in sessione
-            session.setAttribute("carrello", carrello);
-            return true;
-        }
-        else // non ha nulla (primo acquisto)
-        {
-            // creiamo un nuovo carrello e ci aggiungiamo il prodotto
+        List<Prodotto> carrello = (List<Prodotto>) session.getAttribute("carrello");
+        if (carrello == null) {
             carrello = new ArrayList<>();
             carrello.add(prodotto);
-            // salviamo il carrello come attributo di sessione
+            session.setAttribute("carrello", carrello);
+            return true;
+        } else {
+            carrello.add(prodotto);
             session.setAttribute("carrello", carrello);
             return true;
         }
+
     }
 
     @SuppressWarnings("unchecked")
