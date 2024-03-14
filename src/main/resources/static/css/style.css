@@ -106,7 +106,8 @@ button.btn {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 55px;
+    font-family: Didot;
 }
 
 .static-chisiamo {
@@ -148,6 +149,7 @@ button.btn {
     flex-direction: row;
     justify-content: center;
     gap: 200px;
+    margin-top: 50px;
 }
 
 .riservatau {
@@ -172,4 +174,25 @@ p.list-group-item {
 }
 a {
     text-decoration: none;
+}
+
+#contact_form {
+    margin: 0 auto;
+    text-align: center;
+    float: left;
+    margin-left: 30%;
+}
+
+.contact {
+    text-align: center;
+}
+
+.contact-form-body {
+    background-color: #99BC85;
+    padding-left: 400;
+    padding-right: 400;
+}
+
+.howtocontact {
+    background-color: #99BC85;
 }

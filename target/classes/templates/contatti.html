@@ -10,7 +10,8 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" th:href="@{/}">Agriturismo</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -47,26 +48,68 @@
         </div>
     </div>
 </nav>
-<div class="title">
-    <h1>Come contattarci?</h1>
+<div class="contact title howtocontact">
+    <h2 class="m-12">Come contattarci?</h2>
 </div>
 <div class="static-contatti">
     <div>
-        <h2>WhatsApp</h2>
+        <h3>WhatsApp</h3>
         <div>
             <p>333 3237896</p>
         </div>
     </div>
     <div>
-        <h2>Telefono</h2>
+        <h3>Telefono</h3>
         <div>
             <p>081 5674 345</p>
         </div>
     </div>
     <div>
-        <h2>Email</h2>
+        <h3>Email</h3>
         <div>
             <p>info@agriturismovc.com</p>
+        </div>
+    </div>
+</div>
+<div class="contact-form-body">
+    <h2 class="contact title">Contattaci</h2>
+    <form id="contact_form" name="contact_form" method="post">
+        <div class="mb-5 row">
+            <div class="col">
+                <label>Nome</label>
+                <input type="text" required maxlength="50" class="form-control" id="first_name" name="first_name">
+            </div>
+            <div class="col">
+                <label>Cognome</label>
+                <input type="text" required maxlength="50" class="form-control" id="last_name" name="last_name">
+            </div>
+        </div>
+        <div class="mb-5 row">
+            <div class="col">
+                <label for="email_addr">Email</label>
+                <input type="email" required maxlength="50" class="form-control" id="email_addr" name="email"
+                       placeholder="nome@example.com">
+            </div>
+            <div class="col">
+                <label for="phone_input">Telefono</label>
+                <input type="tel" required maxlength="50" class="form-control" id="phone_input" name="Phone"
+                       placeholder="Telefono">
+            </div>
+        </div>
+        <div class="mb-5">
+            <label for="message">Testo</label>
+            <textarea class="form-control" id="message" name="message" rows="5"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary px-4 btn-lg">Invia</button>
+    </form>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2787.985667172906!2d9.835061089192713!3d45.671188046505236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47815c6012e29a0f%3A0xa368e1ebd01f907!2s24060%20Duria%20BG!5e0!3m2!1sit!2sit!4v1710255817602!5m2!1sit!2sit"
+                        width="450" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
         </div>
     </div>
 </div>
