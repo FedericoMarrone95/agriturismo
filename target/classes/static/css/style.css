@@ -173,3 +173,13 @@ p.list-group-item {
 a {
     text-decoration: none;
 }
+
+.qty {
+    width: 80px;
+    display: flex;
+    justify-content: space-around;
+}
+.number {
+    margin: 0px 20px;
+    font-size: 20px;
+}
