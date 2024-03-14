@@ -29,6 +29,9 @@ h1{
     font-size: 60px;
     font-family: Didot;
 }
+h2, h3, h4, h5, h6{
+    font-family: Didot;
+}
 nav.navbar.navbar-expand-lg.bg-body-tertiary {
     background-color: #41644A !important;
     position: fixed;
