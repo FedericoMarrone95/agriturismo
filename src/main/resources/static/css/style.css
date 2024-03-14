@@ -117,9 +117,9 @@ button.btn {
     justify-content: center;
 }
 
-.card-body {
+/*.card-body {
     background-color: #99BC85;
-}
+}*/
 
 .card-height {
 }
@@ -136,4 +136,10 @@ button.btn {
 }
 .lista-prodotti{
     flex-wrap: wrap;
+}
+.pad-top-50{
+    padding-top: 70px;
+}
+.side-bg{
+    background-color: #99BC85 !important;
 }
