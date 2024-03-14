@@ -53,16 +53,19 @@
 <!--SIDEBAR TIPOLOGIE-->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12 col-md-2 pad-top-50 side-bg">
-            <h3 class="text-light">Filtra per Tipologie</h3>
-            <ul class="btn-toggle-nav">
-                <li class="list-group-item">
-                    <a th:href="@{/catalogo}" class="link-light">Tutti i prodotti</a>
-                </li>
-                <li th:each="tipologia : ${tipologie}" class="list-group-item">
-                    <a th:href="@{/catalogo(tipologiaId=${tipologia.id})}" class="link-light rounded" th:text="${tipologia.nome}">Tipologia</a>
-                </li>
-            </ul>
+        <div class="col-12 col-md-2 pad-top-50 side-bg" style="position:relative">
+            <div style="position:fixed">
+                <h3 class="text-light">Filtra per Tipologie</h3>
+                <ul class="btn-toggle-nav">
+                    <li class="list-group-item">
+                        <a th:href="@{/catalogo}" class="link-light">Tutti i prodotti</a>
+                    </li>
+                    <li th:each="tipologia : ${tipologie}" class="list-group-item">
+                        <a th:href="@{/catalogo(tipologiaId=${tipologia.id})}" class="link-light rounded" th:text="${tipologia.nome}">Tipologia</a>
+                    </li>
+                </ul>
+            </div>
+
         </div>
         <div class="col-12 col-md-10 m-12">
             <div class="d-flex lista-prodotti">
@@ -75,7 +78,8 @@
                         <p th:text="${#numbers.formatDecimal(prodotto.prezzo, 0, 'POINT', 2, 'COMMA')}+' €'" class="list-group-item"></p>
                     </div>
                     <div class="card-body">
-                        <a th:href="@{/dettaglio(id=${prodotto.id})}" class="card-link">Dettaglio</a>
+                        <button type="button" class="btn btn-success"><a th:href="@{/dettaglio(id=${prodotto.id})}" class="text-light">Visualizza Prodotto</a></button>
+
                     </div>
                 </div>
             </div>
