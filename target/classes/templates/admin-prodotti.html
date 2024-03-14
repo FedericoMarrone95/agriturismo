@@ -107,8 +107,13 @@
 document.addEventListener("DOMContentLoaded", function(){
 var prezzo = document.getElementById("p");
 var scorte = document.getElementById("s");
-prezzo.value= '';
-scorte.value= '';
+if (prezzo.value==='' || prezzo.value === '0' || prezzo.value === '0.0'){
+    prezzo.value= '';
+}
+if(scorte.value=== '' || scorte.value === '0'){
+    scorte.value='';
+}
+
 });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
