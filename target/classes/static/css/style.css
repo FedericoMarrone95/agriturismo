@@ -196,3 +196,13 @@ a {
 .howtocontact {
     background-color: #99BC85;
 }
+.qty {
+    width: 80px;
+    display: flex;
+    justify-content: space-around;
+    margin-left: 20px;
+}
+.number {
+    margin: 0px 20px;
+    font-size: 20px;
+}

@@ -1,5 +1,13 @@
-$(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-            });
-        });
+let quantità = 1;
+function qty(click){
+
+    if(click=="plus"){
+        quantità ++;
+        document.querySelector(".number").innerText = quantità;
+    } else {
+        if(quantità != 1){
+            quantità --;
+            document.querySelector(".number").innerText = quantità;
+        }
+    }
+}
