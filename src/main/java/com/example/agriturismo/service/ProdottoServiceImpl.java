@@ -35,7 +35,7 @@ public class ProdottoServiceImpl implements ProdottoService {
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean aggiungiACarrello(int id, HttpSession session)
+    public boolean aggiungiACarrello(int id, int quantita, HttpSession session)
     {
         Prodotto prodotto = getProdottoById(id);
         List<Prodotto> carrello = (List<Prodotto>) session.getAttribute("carrello");

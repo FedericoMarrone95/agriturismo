@@ -1,12 +1,12 @@
-let quantità = 1;
+let quantita = 1;
 function qty(click){
     if(click=="plus"){
-        quantità ++;
-        document.querySelector(".number").innerText = quantità;
+        quantita ++;
+        document.querySelector(".number").innerText = quantita;
     } else {
-        if(quantità != 1){
-            quantità --;
-            document.querySelector(".number").innerText = quantità;
+        if(quantita != 1){
+            quantita --;
+            document.querySelector(".number").innerText = quantita;
         }
     }
 }

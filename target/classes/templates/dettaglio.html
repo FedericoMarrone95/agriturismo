@@ -65,14 +65,13 @@
             <br>
             <h4 th:text="${#numbers.formatDecimal(prodotto.prezzo, 1, 'POINT', 2, 'COMMA')}+'€'">Prezzo</h4>
             <br>
-            <a class="link-light" th:href="@{/dettaglio/aggiungi(id=${prodotto.id})}"><button type="button" class="btn btn-success">Aggiungi al carrello</button></a>
+            <a class="link-light" th:href="@{/dettaglio/aggiungi(id=${prodotto.id},quantita=1)}"><button type="button" class="btn btn-success">Aggiungi al carrello</button></a>
             <div th:if="${result != null}"
                  th:text="${result.equals('y') ? 'Articolo aggiunto con successo' : 'Articolo già presente in carrello'}"
                  th:style="${result.equals('y') ? 'color:green' : 'color:red'}" class="alert" role="alert">
 
             </div>
         </div>
-
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

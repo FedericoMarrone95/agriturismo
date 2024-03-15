@@ -38,4 +38,12 @@ public class Tipologia {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public List<Prodotto> getProdotti() {
+        return prodotti;
+    }
+
+    public void setProdotti(List<Prodotto> prodotti) {
+        this.prodotti = prodotti;
+    }
 }

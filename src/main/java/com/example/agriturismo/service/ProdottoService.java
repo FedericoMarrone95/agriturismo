@@ -9,7 +9,7 @@ import java.util.List;
 public interface ProdottoService {
     List<Prodotto> getProdotti();
     Prodotto getProdottoById(int id);
-    boolean aggiungiACarrello(int id, HttpSession session);
+    boolean aggiungiACarrello(int id, int quantita, HttpSession session);
     List<Prodotto> getCarrello(HttpSession session);
     void rimuoviDalCarrello(int id, HttpSession session);
     double getTotaleCarrello(HttpSession session);
