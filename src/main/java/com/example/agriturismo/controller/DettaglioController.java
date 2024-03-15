@@ -1,4 +1,5 @@
 package com.example.agriturismo.controller;
+import com.example.agriturismo.model.Admin;
 import com.example.agriturismo.model.Prodotto;
 import com.example.agriturismo.service.ProdottoService;
 import jakarta.servlet.http.HttpSession;
@@ -18,7 +19,7 @@ public class DettaglioController
   private ProdottoService prodottoService;
 
   @GetMapping
-  public String getPage(
+  public String getPage(HttpSession session,
           @RequestParam("id") int id,
           Model model,
           @RequestParam(name = "add", required = false) String result
@@ -27,6 +28,8 @@ public class DettaglioController
     Prodotto prodotto = prodottoService.getProdottoById(id);
     model.addAttribute("prodotto", prodotto);
     model.addAttribute("result", result);
+    Admin admin = (Admin) session.getAttribute("admin");
+    model.addAttribute("admin", admin);
     return "dettaglio";
   }
 

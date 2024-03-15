@@ -72,6 +72,10 @@
                  th:style="${result.equals('y') ? 'color:green' : 'color:red'}" class="alert" role="alert">
 
             </div>
+
+            <div th:if="${admin != null}" class="alert alert-primary m-12" role="alert">
+                <a th:href="@{/adminprodotti}"> Ritorna alla dashboard admin</a>
+            </div>
         </div>
 
     </div>
