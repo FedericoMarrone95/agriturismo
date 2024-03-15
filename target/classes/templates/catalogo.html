@@ -71,15 +71,15 @@
             </div>
 
         </div>
-        <div class="col-12 col-md-10 m-12">
+        <div class="col-12 col-md-10 pad-top-50">
             <div class="d-flex lista-prodotti">
                 <div th:each="prodotto : ${prodotti}" class="card mt-3" style="width: 18rem; margin-left: 20px;">
-                    <img th:src="@{(${prodotto.immagine})}" class="card-img-top" alt="...">
+                    <img th:src="@{(${prodotto.immagine})}" class="card-img-top max-img-size" alt="...">
                     <div class="card-body">
-                        <h5 th:text="${prodotto.nome}" class="card-title"></h5>
-                        <p th:text="${prodotto.tipologia.nome}" class="card-text"></p>
-                        <p th:text="'Scorte: ' + ${prodotto.scorte}" class="card-text"></p>
-                        <p th:text="${#numbers.formatDecimal(prodotto.prezzo, 1, 'POINT', 2, 'COMMA')}+' €'" class="list-group-item"></p>
+                        <h5 th:text="${prodotto.nome}" class="card-title" style="margin: 0"></h5>
+                        <a th:href="@{/catalogo(tipologiaId=${prodotto.tipologia.id})}" th:text="${prodotto.tipologia.nome}" class="card-text text-dark" style="margin: 0; text-decoration: underline"></a>
+                        <p th:text="'Scorte: ' + ${prodotto.scorte}" class="card-text" style="margin: 0"></p>
+                        <p th:text="${#numbers.formatDecimal(prodotto.prezzo, 1, 'POINT', 2, 'COMMA')}+' €'" class="list-group-item" style="margin: 0"></p>
                     </div>
                     <div class="card-body">
                         <button type="button" class="btn btn-success"><a th:href="@{/dettaglio(id=${prodotto.id})}" class="text-light">Visualizza Prodotto</a></button>
