@@ -1,7 +1,9 @@
 package com.example.agriturismo.controller;
 
+import com.example.agriturismo.model.Admin;
 import com.example.agriturismo.model.Utente;
 import com.example.agriturismo.service.UtenteService;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,9 +20,11 @@ public class RegistrazioneUtenteController {
     @Autowired
     private UtenteService utenteService;
     @GetMapping
-    public String getPage(Model model){
+    public String getPage(Model model, HttpSession session){
         Utente utente= new Utente();
         model.addAttribute("utente", utente);
+        Admin admin = (Admin) session.getAttribute("admin");
+        model.addAttribute("admin", admin);
         return"registrazioneutente";
     }
     @PostMapping
