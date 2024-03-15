@@ -45,6 +45,11 @@ nav.navbar.navbar-expand-lg.bg-body-tertiary {
     z-index: 10;
 }
 
+.social {
+    width: 10px !important;
+    height: 10px !important;
+}
+
 a.nav-link {
     color: #fefefe;
 }
