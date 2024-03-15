@@ -112,6 +112,16 @@ button.btn {
     color: #fff;
 }
 
+.max-img-size {
+    max-width: 100%;
+    max-height: 350px;
+}
+
+.card-body {
+    padding: 5px;
+    margin: 0;
+}
+
 .title{
     display: flex;
     flex-direction: column;
