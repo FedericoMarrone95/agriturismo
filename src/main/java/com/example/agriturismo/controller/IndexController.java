@@ -1,5 +1,6 @@
 package com.example.agriturismo.controller;
 
+import com.example.agriturismo.model.Admin;
 import com.example.agriturismo.model.Utente;
 import com.example.agriturismo.service.ProdottoService;
 import jakarta.servlet.http.HttpSession;
@@ -17,6 +18,8 @@ public class IndexController {
     public String getPage(HttpSession session, Model model){
         Utente utente = (Utente) session.getAttribute("utente");
         model.addAttribute("utente", utente);
+        Admin admin = (Admin) session.getAttribute("admin");
+        model.addAttribute("admin", admin);
         return "index";
     }
 }
