@@ -143,12 +143,16 @@ button.btn {
     font-family: Didot;
 }
 
+p.text-chisiamo {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 .pdesign {
     font-family: Didot;
 }
 
 .tdesign {
-    text-decoration: underline;
     font-weight: bold;
     font-style: italic;
 }
@@ -157,6 +161,20 @@ button.btn {
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+div.container.past {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+div.container.present {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+div.subtitle.family {
+
 }
 
 .cards-chisiamo {
