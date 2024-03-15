@@ -59,6 +59,7 @@
         <tr>
             <th scope="col">Titolo</th>
             <th scope="col">Prezzo</th>
+            <th scope="col">qty</th>
             <th scope="col">Rimuovi</th>
         </tr>
         </thead>
@@ -66,6 +67,7 @@
         <tr th:each="prodotto : ${carrello}">
             <td th:text="${prodotto.nome}">Titolo</td>
             <td th:text="${#numbers.formatDecimal(prodotto.prezzo, 1, 'POINT', 2, 'COMMA')} + ' €'">Prezzo</td>
+            <td class="number">1</td>
             <td><a th:href="@{/riservatautente/rimuovi(id=${prodotto.id})}">Rimuovi Prodotto</a></td>
         </tr>
         </tbody>

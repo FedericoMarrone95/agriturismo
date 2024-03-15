@@ -45,11 +45,6 @@ nav.navbar.navbar-expand-lg.bg-body-tertiary {
     z-index: 10;
 }
 
-.social {
-    width: 10px !important;
-    height: 10px !important;
-}
-
 a.nav-link {
     color: #fefefe;
 }
@@ -243,4 +238,8 @@ a {
 .number {
     margin: 0px 20px;
     font-size: 20px;
+}
+img.social {
+    width: 30px;
+    margin: 10px;
 }
