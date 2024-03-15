@@ -37,17 +37,8 @@
             </ul>
             <div class="d-flex" role="search">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li>
-                        <a th:href="@{/riservatautente}"><img src="img/cart.png" width="22" style="margin-right: 10px;"></a>
-                    </li>
-                    <li th:if="${utente == null}" class="nav-item">
-                        <a class="nav-link" th:href="@{/loginutente}">Accedi</a>
-                    </li>
-                    <li th:if="${utente == null}" class="nav-item">
-                        <a class="nav-link" th:href="@{/registrazioneutente}">Registrati</a>
-                    </li>
-                    <li th:if="${utente != null}" class="nav-item">
-                        <a class="nav-link" th:href="@{/riservatautente}" th:text="'Ciao, '+${utente.username}">Account</a>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/riservatautente/logout}">Logout</a>
                     </li>
                 </ul>
             </div>
