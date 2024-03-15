@@ -62,7 +62,7 @@
                 <h3 class="text-light">Filtra per Tipologie</h3>
                 <ul class="btn-toggle-nav">
                     <li class="list-group-item">
-                        <a th:href="@{/catalogo}" class="link-light">Tutti i prodotti</a>
+                        <a th:href="@{/catalogo}" class="link-light">Azzera Filtri</a>
                     </li>
                     <li th:each="tipologia : ${tipologie}" class="list-group-item">
                         <a th:href="@{/catalogo(tipologiaId=${tipologia.id})}" class="link-light rounded" th:text="${tipologia.nome}">Tipologia</a>
