@@ -59,7 +59,7 @@
     <div class="row">
         <div class="col-12 col-md-2 pad-top-50 side-bg" style="position:relative">
             <div style="position:fixed">
-                <h3 class="text-light">Filtra per Tipologie</h3>
+                <h3 class="text-light" style="padding-top: 12px">Filtra per Tipologie</h3>
                 <ul class="btn-toggle-nav">
                     <li class="list-group-item">
                         <a th:href="@{/catalogo}" class="link-light">Azzera Filtri</a>
@@ -81,7 +81,7 @@
                         <p th:text="'Scorte: ' + ${prodotto.scorte}" class="card-text" style="margin: 0"></p>
                         <p th:text="${#numbers.formatDecimal(prodotto.prezzo, 1, 'POINT', 2, 'COMMA')}+' €'" class="list-group-item" style="margin: 0"></p>
                     </div>
-                    <div class="card-body">
+                    <div class="card-footer text-center">
                         <button type="button" class="btn btn-success"><a th:href="@{/dettaglio(id=${prodotto.id})}" class="text-light">Visualizza Prodotto</a></button>
 
                     </div>

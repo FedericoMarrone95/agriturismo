@@ -214,8 +214,13 @@ div.subtitle.family {
     height: 100vw;
 }
 h5.card-title {
-    font-size: 30px;
+    font-size: 22px;
 }
+
+div.card-footer {
+    background-color: #41644A;
+}
+
 p.list-group-item {
     font-size: 25px;
 }
