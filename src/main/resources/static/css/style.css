@@ -55,6 +55,7 @@ a.nav-linkf {
 
 a.nav-link:hover {
     background-color: #294B29 !important;
+    color: #fff !important;
 }
 
 a.nav-link.active {
