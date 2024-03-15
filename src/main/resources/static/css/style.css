@@ -176,6 +176,7 @@ button.btn {
     justify-content: center;
     gap: 200px;
     margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .riservatau {
@@ -211,17 +212,31 @@ a {
 
 .contact {
     text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.howtocontact {
+    background-image: url(../img/contatti1.jpg);
+    width: 100%;
+    box-shadow: inset 0 0 0 1000px rgba(0,0,0,.4);
+}
+
+.light-text {
+    color: #F5E8DD !important;
 }
 
 .contact-form-body {
     background-color: #99BC85;
-    padding-left: 400;
-    padding-right: 400;
+    padding-bottom: 50px;
 }
 
-.howtocontact {
+.contact-info {
+    border-style: outset;
     background-color: #99BC85;
+    padding: 10px;
 }
+
 .qty {
     width: 80px;
     display: flex;
