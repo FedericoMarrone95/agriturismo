@@ -11,3 +11,7 @@ function qty(click){
         }
     }
 }
+
+function successAlert(){
+
+}

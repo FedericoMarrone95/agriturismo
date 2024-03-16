@@ -34,10 +34,11 @@ public class RegistrazioneUtenteController {
         if(!utenteService.controlloUsername(utente.getUsername())){
             model.addAttribute("duplicato","username non disponibile");
             return "registrazioneutente";
-        }
+        }else {
 
-        utenteService.registraUtente( utente);
-        return"redirect:/loginutente";
+            utenteService.registraUtente(utente);
+            return "redirect:/loginutente";
+        }
     }
 
 }
