@@ -27,11 +27,11 @@ public class LoginUtenteController
     {
         if(session.getAttribute("utente") != null)
             return "redirect:/riservatautente";
+        else if(session.getAttribute("admin") != null)
+            return "redirect:/adminprodotti";
         model.addAttribute("errore", errore);
         Utente utente = (Utente) session.getAttribute("utente");
         model.addAttribute("utente", utente);
-        Admin admin = (Admin) session.getAttribute("admin");
-        model.addAttribute("admin", admin);
         return "loginutente";
     }
 

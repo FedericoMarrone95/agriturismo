@@ -1,4 +1,5 @@
 package com.example.agriturismo.controller;
+import com.example.agriturismo.model.Admin;
 import com.example.agriturismo.service.AdminService;
 import com.example.agriturismo.service.UtenteService;
 import jakarta.servlet.http.HttpSession;
@@ -26,7 +27,11 @@ public class LoginAdminController
     {
         if(session.getAttribute("admin") != null)
             return "redirect:/adminprodotti";
+        else if(session.getAttribute("user") != null)
+            return "redirect:/riservatautente";
         model.addAttribute("errore", errore);
+        Admin admin = (Admin) session.getAttribute("admin");
+        model.addAttribute("admin", admin);
         return "loginadmin";
     }
 

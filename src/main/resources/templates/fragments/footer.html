@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="footer"   class="container-fluid" style="background-color: #41644A !important;">
+    <footer class="py-5 static-footer">
+        <div class="row text-center">
+            <div th:class="${utente == null && admin == null} ? 'col-12 col-md-3 mb-3' : 'col-12 col-md-4 mb-4'">
+                <h5>Agriturismo</h5>
+                <div class="d-flex justify-content-center ">
+                    <a href="https://www.instagram.com" target="_blank">
+                        <img src="img/instagram.png" class="social">
+                    </a>
+                    <a href="https://www.facebook.com" target="_blank">
+                        <img src="img/facebook.png" class="social" alt="Facebook">
+                    </a>
+                </div>
+            </div>
+
+            <div th:class="${utente == null && admin == null} ? 'col-12 col-md-3 mb-3' : 'col-12 col-md-4 mb-4'">
+                <h5>Contatti</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2">info@agriturismovc.com</li>
+                    <li class="nav-item mb-2">333 3237896</li>
+                    <li class="nav-item mb-2">081 5674 345</li>
+                    <li class="nav-item mb-2">Via Lago Duria, 12</li>
+                </ul>
+            </div>
+
+            <div th:class="${utente == null && admin == null} ? 'col-12 col-md-3 mb-3' : 'col-12 col-md-4 mb-4'">
+                <h5>Link Veloci</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a th:href="@{/}" class="nav-linkf p-0">Home</a></li>
+                    <li class="nav-item mb-2"><a th:href="@{/chisiamo}" class="nav-linkf p-0">Chi
+                        Siamo</a></li>
+                    <li class="nav-item mb-2"><a th:href="@{/catalogo}" class="nav-linkf p-0">Catalogo</a>
+                    </li>
+                    <li class="nav-item mb-2"><a th:href="@{/contatti}" class="nav-linkf p-0">Contatti</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div th:if="${utente == null && admin == null}" class="col-12 col-md-3 mb-3">
+                <h5>Area Admin</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a th:href="@{/loginadmin}" class="nav-linkf p-0">Accedi</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="d-flex flex-column flex-sm-row justify-content-between border-top">
+            <p>&copy; 2024 Company, JAITA105. All rights reserved.</p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
