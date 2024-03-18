@@ -63,12 +63,12 @@
             <div>
                 La registrazione è avvenuta con successo! <br>
                 Grazie per essere entrato a far parte della nostra clientela! <br>
-                Premi Continua per andare al login e inizia a scoprire i nostri prodotti.
+                Premi Login per andare al login, inserisci i tuoi dati e inizia a scoprire i nostri prodotti.
             </div>
         </div>
         <br>
         <a th:href="@{/loginutente}">
-            <button type="button" class="btn btn-primary">Continua</button>
+            <button type="button" class="btn btn-primary">Login</button>
         </a>
     </div>
     <form th:if="(${reg}==null)" th:object="${utente}" method="post" class="form-login">
