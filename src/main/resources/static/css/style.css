@@ -103,6 +103,7 @@ main.registrati {
 form.form-login {
     width: 50% !important;
 }
+
 button.btn {
     background-color: #41644A;
     color: #fff;
@@ -110,6 +111,16 @@ button.btn {
 }
 .btn:hover{
     background-color: #41644A;
+    color: #fff;
+}
+
+button.btn-adm {
+    background-color: #CD5C08 !important;
+    color: #fff;
+    border: 0px;
+}
+.btn-adm:hover{
+    background-color: #FB8B24 !important;
     color: #fff;
 }
 
