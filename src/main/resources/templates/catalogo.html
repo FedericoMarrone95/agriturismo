@@ -36,10 +36,12 @@
                         <p th:text="'Scorte: ' + ${prodotto.scorte}" class="card-text" style="margin: 0"></p>
                         <p th:text="${#numbers.formatDecimal(prodotto.prezzo, 1, 'POINT', 2, 'COMMA')}+' €'" class="list-group-item" style="margin: 0"></p>
                     </div>
+                    <a th:href="@{/dettaglio(id=${prodotto.id})}" class="text-light">
                     <div class="card-footer text-center">
-                        <button type="button" class="btn btn-success"><a th:href="@{/dettaglio(id=${prodotto.id})}" class="text-light">Visualizza Prodotto</a></button>
+                        <button type="button" class="btn btn-success">Visualizza Prodotto</button>
 
                     </div>
+                    </a>
                 </div>
             </div>
         </div>
