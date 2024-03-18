@@ -29,7 +29,7 @@
         <div class="col-12 col-md-10 pad-top-50">
             <div class="d-flex lista-prodotti">
                 <div th:each="prodotto : ${prodotti}" class="card mt-3" style="width: 18rem; margin-left: 20px;">
-                    <img th:src="@{(${prodotto.immagine})}" class="card-img-top max-img-size" alt="...">
+                    <img th:src="@{${prodotto.immagine == null ? 'img/markerImage.png' : prodotto.immagine}}" class="card-img-top max-img-size" alt="Immagine Prodotto">
                     <div class="card-body">
                         <h5 th:text="${prodotto.nome}" class="card-title" style="margin: 0"></h5>
                         <a th:href="@{/catalogo(tipologiaId=${prodotto.tipologia.id})}" th:text="${prodotto.tipologia.nome}" class="card-text text-dark" style="margin: 0; text-decoration: underline"></a>
