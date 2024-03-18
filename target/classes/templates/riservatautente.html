@@ -39,9 +39,12 @@
     <br>
     <h5 th:if="${carrello != null}" th:text="'Totale Carrello ' + ${#numbers.formatDecimal(totale, 1, 'POINT', 2, 'COMMA')} + ' €'"></h5>
     <br>
-    <a class="text-light" th:href="@{/catalogo}"><button th:if="${carrello != null}" type="button" class="btn btn-success">Continua ad acquistare</button></a>
+    <div class="d-flex flex-column">
+        <a class="text-light" th:href="@{/catalogo}"><button th:if="${carrello != null}" type="button" class="btn btn-success">Continua ad acquistare</button></a>
+        <img th:if="${carrello != null}" src="img/pay-pal-grande.png" width="120" style="margin: 20px 0px">
+        <a class="text-light" th:href="@{/riservatautente/invia}"><button th:if="${carrello != null}" type="button" class="btn btn-success">Acquista con PayPal</button></a>
+    </div>
 
-    <a class="text-light" th:href="@{/riservatautente/invia}"><button th:if="${carrello != null}" type="button" class="btn btn-success">Acquista</button></a>
     <br>
     <div th:if="${send}" class="alert alert-success" role="alert">
         Ordine inviato con successo. Grazie!
