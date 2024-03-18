@@ -37,7 +37,7 @@ public class RegistrazioneUtenteController {
         }
 
         utenteService.registraUtente( utente);
-        return"redirect:/loginutente";
+        return "registrazionesuccesso";
     }
 
 }
