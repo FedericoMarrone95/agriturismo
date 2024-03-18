@@ -229,6 +229,11 @@ div.subtitle.family {
     background-color: #99BC85 !important;
     height: 100vw;
 }
+
+.side-bg-adm{
+    background-color: #CD5C08 !important;
+}
+
 h5.card-title {
     font-size: 22px;
 }
