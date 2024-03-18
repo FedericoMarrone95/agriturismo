@@ -2,6 +2,7 @@ package com.example.agriturismo.controller;
 
 
 import com.example.agriturismo.model.Admin;
+import com.example.agriturismo.model.Tipologia;
 import com.example.agriturismo.model.Utente;
 import com.example.agriturismo.service.ProdottoService;
 import com.example.agriturismo.service.TipologiaService;
@@ -24,6 +25,8 @@ public class CatalogoController {
     public String getPage(Model model, @RequestParam(required = false) Integer tipologiaId, HttpSession session) {
         if (tipologiaId != null) {
             model.addAttribute("prodotti", prodottoService.getProdottiByTipologia(tipologiaId));
+            Tipologia tipologiaSelezionata = tipologiaService.getTipologiaById(tipologiaId);
+            model.addAttribute("nomeTipologia", tipologiaSelezionata.getNome());
         } else {
             model.addAttribute("prodotti", prodottoService.getProdotti());
         }

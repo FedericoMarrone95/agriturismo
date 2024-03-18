@@ -27,6 +27,8 @@
 
         </div>
         <div class="col-12 col-md-10 pad-top-50">
+            <h1 class="text-center" th:text="${nomeTipologia == null ? 'Categorie' : nomeTipologia}">Tipologia</h1>
+
             <div class="d-flex lista-prodotti">
                 <div th:each="prodotto : ${prodotti}" class="card mt-3" style="width: 18rem; margin-left: 20px;">
                     <img th:src="@{${prodotto.immagine == null ? 'img/markerImage.png' : prodotto.immagine}}" class="card-img-top max-img-size" alt="Immagine Prodotto">
