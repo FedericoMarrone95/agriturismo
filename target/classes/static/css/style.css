@@ -293,7 +293,7 @@ a.nav-link.admin-link:hover{
 }
 h3.testo-categoria {
     position: absolute;
-    z-index: 100;
+    z-index: 1;
     color: #fff;
     bottom: 30px;
     left: 25px;
