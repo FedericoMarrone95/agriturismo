@@ -55,7 +55,7 @@
 </nav>
 <main class="login">
     <form action="/loginutente" method="post" class="form-login">
-        <h1 class="h3 mb-3 fw-normal text-center">Accedi</h1>
+        <h1 class="h3 mb-3 fw-normal text-center white-text">Accedi</h1>
         <div th:if="${errore}" class="alert alert-danger" role="alert">
             Credenziali Errate. Riprova
         </div>
@@ -71,7 +71,7 @@
         <br>
         <button class="btn btn-success w-100 py-2" type="submit">Accedi</button>
         <br>
-        <p>Non sei registrato? <a th:href="@{/registrazioneutente}">Registrati</a></p>
+        <p class="white-text">Non sei registrato? <a th:href="@{/registrazioneutente}">Registrati</a></p>
 
     </form>
 </main>

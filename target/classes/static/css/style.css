@@ -83,7 +83,7 @@ main.login {
     height: 100vh !important;
     justify-content: center;
     align-items: center;
-    background-image: url(../img/foto4.jpeg);
+    background-image: url(../img/interfaccia1.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -94,7 +94,7 @@ main.registrati {
     padding: 60px 0px !important;
     justify-content: center;
     align-items: center;
-    background-image: url(../img/foto4.jpeg);
+    background-image: url(../img/interfaccia1.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -321,4 +321,8 @@ img.immagine-categoria {
 }
 .mb-50{
     margin-bottom: 50px;
+}
+
+.white-text {
+    color: #fff !important
 }
