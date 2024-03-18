@@ -106,6 +106,7 @@ form.form-login {
 button.btn {
     background-color: #41644A;
     color: #fff;
+    border: 0px;
 }
 .btn:hover{
     background-color: #41644A;
