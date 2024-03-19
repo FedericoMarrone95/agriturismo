@@ -87,33 +87,38 @@
                 <button class="btn-adm btn-success w-100 py-2" type="submit">Registra Prodotto</button>
             </form>
         </div>
-        <div class="col-12 col-md-12 m-12 side-bg-adm">
-            <div>
-                <h4 class="text-light text-center" style="padding-top: 12px">Filtra per Tipologie</h4>
-                <ul class="btn-toggle-nav">
-                    <li class="list-group-item" style="display: inline-block; margin-right: 10px">
-                        <a th:href="@{/catalogo}" class="link-light">Azzera Filtri</a>
-                    </li>
-                    <li th:each="tipologia : ${tipologie}" class="list-group-item" style="display: inline-block; margin-right: 10px">
-                        <a th:href="@{/catalogo(tipologiaId=${tipologia.id})}" class="link-light rounded" th:text="${tipologia.nome}">Tipologia</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-12 col-md-12 pad-top-50">
-            <div class="d-flex lista-prodotti">
-                <div th:each="prodotto : ${prodotti}" class="card mt-3" style="width: 18rem; margin-left: 20px;">
-                    <img th:src="@{(${prodotto.immagine})}" class="card-img-top max-img-size" alt="...">
-                    <div class="card-body">
-                        <h5 th:text="${prodotto.nome}" class="card-title" style="margin: 0"></h5>
-                        <p th:text="${prodotto.tipologia.nome}" class="card-text" style="margin: 0"></p>
-                        <p th:text="'Scorte: ' + ${prodotto.scorte}" class="card-text" style="margin: 0"></p>
-                        <p th:text="${#numbers.formatDecimal(prodotto.prezzo, 1, 'POINT', 2, 'COMMA')}+' €'" class="list-group-item" style="margin: 0"></p>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-md-12 m-12 side-bg-adm" style="position:relative">
+                    <div>
+                        <h4 class="text-light text-center" style="padding-top: 12px">Filtra per Tipologie</h4>
+                        <ul class="btn-toggle-nav">
+                            <li class="list-group-item" style="display: inline-block; margin-right: 10px">
+                                <a th:href="@{/adminprodotti}" class="link-light">Azzera Filtri</a>
+                            </li>
+                            <li th:each="tipologia : ${tipologie}" class="list-group-item" style="display: inline-block; margin-right: 10px">
+                                <a th:href="@{/adminprodotti(tipologiaId=${tipologia.id})}" class="link-light rounded" th:text="${tipologia.nome}">Tipologia</a>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="card-body">
-                        <a th:href="@{/dettaglio(id=${prodotto.id})}" class="card-link">Dettaglio</a>
-                        <a th:href="@{/adminprodotti(id=${prodotto.id})}" class="card-link">Modifica</a>
-                        <a th:href="@{/adminprodotti/elimina(id=${prodotto.id})}" class="card-link">Elimina</a>
+                </div>
+                <div class="col-12 col-md-12 pad-top-50">
+                    <h1 class="text-center" th:text="${nomeTipologia == null ? 'Tutti i prodotti' : nomeTipologia}">Tipologia</h1>
+                    <div class="d-flex lista-prodotti">
+                        <div th:each="prodotto : ${prodotti}" class="card mt-3" style="width: 18rem; margin-left: 20px;">
+                            <img th:src="@{(${prodotto.immagine == null ? 'img/markerImage.png' : prodotto.immagine})}" class="card-img-top max-img-size" alt="...">
+                            <div class="card-body">
+                                <h5 th:text="${prodotto.nome}" class="card-title" style="margin: 0"></h5>
+                                <p th:text="${prodotto.tipologia.nome}" class="card-text" style="margin: 0"></p>
+                                <p th:text="'Scorte: ' + ${prodotto.scorte}" class="card-text" style="margin: 0"></p>
+                                <p th:text="${#numbers.formatDecimal(prodotto.prezzo, 1, 'POINT', 2, 'COMMA')}+' €'" class="list-group-item" style="margin: 0"></p>
+                            </div>
+                            <div class="card-body">
+                                <a th:href="@{/dettaglio(id=${prodotto.id})}" class="card-link">Dettaglio</a>
+                                <a th:href="@{/adminprodotti(id=${prodotto.id})}" class="card-link">Modifica</a>
+                                <a th:href="@{/adminprodotti/elimina(id=${prodotto.id})}" class="card-link">Elimina</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

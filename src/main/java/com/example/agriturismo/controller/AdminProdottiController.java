@@ -29,7 +29,8 @@ public class AdminProdottiController {
     @GetMapping
     public String getPage(
         Model model, HttpSession session,
-        @RequestParam(name = "id", required = false) Integer id
+        @RequestParam(name = "id", required = false) Integer id,
+        @RequestParam(required = false) Integer tipologiaId
     ){
         if(session.getAttribute("admin") == null)
             return "redirect:/loginadmin";
@@ -38,7 +39,14 @@ public class AdminProdottiController {
         if(errori == null){
             prodotto = id == null ? new Prodotto() : prodottoService.getProdottoById(id);
         }
-        model.addAttribute("prodotti", prodotti);
+        if (tipologiaId != null) {
+            model.addAttribute("prodotti", prodottoService.getProdottiByTipologia(tipologiaId));
+            Tipologia tipologiaSelezionata = tipologiaService.getTipologiaById(tipologiaId);
+            model.addAttribute("nomeTipologia", tipologiaSelezionata.getNome());
+        } else {
+            model.addAttribute("prodotti", prodottoService.getProdotti());
+        }
+        model.addAttribute("tipologie", tipologiaService.getTipologie());
         model.addAttribute("tipologie", tipologie);
         model.addAttribute("prodotto", prodotto);
         model.addAttribute("errori", errori);
