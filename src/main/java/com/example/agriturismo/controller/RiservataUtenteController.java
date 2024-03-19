@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/riservatautente")
 public class RiservataUtenteController {
     @Autowired
-    ProdottoService prodottoService;
+    private ProdottoService prodottoService;
 
     @Autowired
     private OrdineService ordineService;
@@ -28,7 +28,8 @@ public class RiservataUtenteController {
     public String getPage(
             HttpSession session,
             Model model,
-            @RequestParam(name = "send", required = false) String send
+            @RequestParam(name = "send", required = false) String send,
+            @RequestParam(name = "add", required = false) String result
     )
     {
         if(session.getAttribute("utente") == null)
@@ -36,8 +37,10 @@ public class RiservataUtenteController {
         Utente utente = (Utente) session.getAttribute("utente");
         model.addAttribute("utente", utente);
         model.addAttribute("carrello", prodottoService.getCarrello(session));
+        model.addAttribute("carrelloQuantita", prodottoService.trasformaACarrelloQuantita(session));
         model.addAttribute("totale", prodottoService.getTotaleCarrello(session));
         model.addAttribute("send", send);
+        model.addAttribute("result", result);
         return "riservatautente";
     }
 
@@ -46,6 +49,27 @@ public class RiservataUtenteController {
     {
         session.removeAttribute("utente");
         return "redirect:/";
+    }
+
+    @GetMapping("/aggiungi")
+    public String increase(
+            @RequestParam("id") int id,
+            HttpSession session
+    )
+    {
+        if(!prodottoService.aggiungiACarrello(id, session))
+            return "redirect:/riservatautente?id=" + id + "&add=n";
+        return "redirect:/riservatautente?id=" + id + "&add=y";
+    }
+
+    @GetMapping("/diminuisci")
+    public String decrease(
+            @RequestParam("id") int id,
+            HttpSession session
+    )
+    {
+        prodottoService.diminuisciDalCarrello(id, session);
+        return "redirect:/riservatautente";
     }
 
     @GetMapping("/rimuovi")
@@ -61,6 +85,7 @@ public class RiservataUtenteController {
     @GetMapping("/invia")
     public String send(HttpSession session)
     {
+        prodottoService.modificaScorte(session);
         ordineService.inviaOrdine(session);
         return "redirect:/riservatautente?send";
     }

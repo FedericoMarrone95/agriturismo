@@ -42,7 +42,7 @@ public class DettaglioController
           HttpSession session
   )
   {
-    if(!prodottoService.aggiungiACarrello(id,session))
+    if(!prodottoService.aggiungiACarrello(id, session))
       return "redirect:/dettaglio?id=" + id + "&add=n";
     return "redirect:/dettaglio?id=" + id + "&add=y";
   }

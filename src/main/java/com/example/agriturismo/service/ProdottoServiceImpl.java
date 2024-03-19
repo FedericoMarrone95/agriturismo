@@ -3,6 +3,7 @@ package com.example.agriturismo.service;
 import com.example.agriturismo.dao.ProdottoDao;
 import com.example.agriturismo.model.Prodotto;
 
+import com.example.agriturismo.model.ProdottoQuantita;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,33 +38,27 @@ public class ProdottoServiceImpl implements ProdottoService {
     @Override
     public boolean aggiungiACarrello(int id, HttpSession session)
     {
-        // recuperiamo il prodotto che si vuole aggiungere
         Prodotto prodotto = getProdottoById(id);
-        // capiamo se l'utente ha già un carrello oppure no
-        List<Prodotto> carrello;
-        if(session.getAttribute("carrello") != null) // lo ha già
-        {
-            // recuperiamo il carrello salvato in sessione
-            carrello = (List<Prodotto>) session.getAttribute("carrello");
-            // capiamo se il prodotto da acquistare è già nel carrello
-            for(Prodotto p : carrello)
-                if(p.getId() == id)
-                    return false;
-            // se il prodotto non è già presente, lo aggiungiamo
-            carrello.add(prodotto);
-            // sovrascriviamo il valore del carrello in sessione
-            session.setAttribute("carrello", carrello);
-            return true;
-        }
-        else // non ha nulla (primo acquisto)
-        {
-            // creiamo un nuovo carrello e ci aggiungiamo il prodotto
+        List<Prodotto> carrello = (List<Prodotto>) session.getAttribute("carrello");
+        if (carrello == null) {
+            if(prodotto.getScorte() == 0)
+                return false;
             carrello = new ArrayList<>();
             carrello.add(prodotto);
-            // salviamo il carrello come attributo di sessione
+            session.setAttribute("carrello", carrello);
+            return true;
+        } else {
+            int quantita = 0;
+            for(Prodotto p:carrello)
+                if(p.getId()==id)
+                    quantita++;
+            if(prodotto.getScorte() <= quantita)
+                return false;
+            carrello.add(prodotto);
             session.setAttribute("carrello", carrello);
             return true;
         }
+
     }
 
     @SuppressWarnings("unchecked")
@@ -75,9 +70,8 @@ public class ProdottoServiceImpl implements ProdottoService {
         return null;
     }
 
-    @SuppressWarnings("unchecked")
     @Override
-    public void rimuoviDalCarrello(int id, HttpSession session)
+    public void diminuisciDalCarrello(int id, HttpSession session)
     {
         // otteniamo il carrello dalla sessione (sicuri di averlo)
         List<Prodotto> carrello = (List<Prodotto>) session.getAttribute("carrello");
@@ -88,6 +82,18 @@ public class ProdottoServiceImpl implements ProdottoService {
                 carrello.remove(p);
                 break;
             }
+        if(carrello.size() > 0) // sovrascriviamo
+            session.setAttribute("carrello", carrello);
+        else // rimuoviamo completamente
+            session.removeAttribute("carrello");
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public void rimuoviDalCarrello(int id, HttpSession session)
+    {
+        // otteniamo il carrello dalla sessione (sicuri di averlo)
+        List<Prodotto> carrello = (List<Prodotto>) session.getAttribute("carrello");
         // rimuoviamo il prodotto dal carrello (versione avanzata)
         carrello = carrello
                 .stream()
@@ -164,5 +170,38 @@ public class ProdottoServiceImpl implements ProdottoService {
         return prodottoDao.findByTipologiaId(idTipologia);
     }
 
+    @Override
+    public List<ProdottoQuantita> trasformaACarrelloQuantita(HttpSession session){
+        List<Prodotto> carrello = (List<Prodotto>) session.getAttribute("carrello");
+        if(carrello == null)
+            return null;
+        List<ProdottoQuantita> carrelloQuantita = new ArrayList<>();
+        for(Prodotto p : carrello){
+            boolean prodottoPresente = false;
+            for(ProdottoQuantita pq : carrelloQuantita){
+                if(p.getId() == pq.getProdotto().getId()){
+                    prodottoPresente = true;
+                    pq.setQuantita(pq.getQuantita() + 1);
+                }
+            }
+            if(!prodottoPresente){
+                ProdottoQuantita prodottoQuantita = new ProdottoQuantita(p, 1);
+                carrelloQuantita.add(prodottoQuantita);
+            }
+        }
+        session.setAttribute("carrelloQuantita", carrelloQuantita);
+        return carrelloQuantita;
+    }
 
+    @Override
+    public void modificaScorte(HttpSession session){
+        List<ProdottoQuantita> carrelloQuantita = (List<ProdottoQuantita>) session.getAttribute("carrelloQuantita");
+        if(carrelloQuantita != null){
+            for(ProdottoQuantita pq : carrelloQuantita) {
+                pq.getProdotto().setScorte(pq.getProdotto().getScorte() - pq.getQuantita());
+                prodottoDao.save(pq.getProdotto());
+            }
+            session.setAttribute("carrelloQuantita", carrelloQuantita);
+        }
+    }
 }

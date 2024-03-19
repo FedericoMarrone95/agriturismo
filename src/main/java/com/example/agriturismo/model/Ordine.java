@@ -20,13 +20,13 @@ public class Ordine {
     @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "id_utente", referencedColumnName = "id")
     private Utente utente;
-    @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinTable(
-            name= "ordini_prodotti",
+            name= "ordini_prodotti_quantita",
             joinColumns = @JoinColumn(name="id_ordine", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "id_prodotto", referencedColumnName = "id")
+            inverseJoinColumns = @JoinColumn(name = "id_prodotto_quantita", referencedColumnName = "id")
     )
-    private List<Prodotto> prodotti = new ArrayList<>();
+    private List<ProdottoQuantita> prodottiQuantita = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -60,11 +60,11 @@ public class Ordine {
         this.utente = utente;
     }
 
-    public List<Prodotto> getProdotti() {
-        return prodotti;
+    public List<ProdottoQuantita> getProdottiQuantita() {
+        return prodottiQuantita;
     }
 
-    public void setProdotti(List<Prodotto> prodotti) {
-        this.prodotti = prodotti;
+    public void setProdottiQuantita(List<ProdottoQuantita> prodottiQuantita) {
+        this.prodottiQuantita = prodottiQuantita;
     }
 }

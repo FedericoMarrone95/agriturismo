@@ -3,6 +3,7 @@ package com.example.agriturismo.service;
 import com.example.agriturismo.dao.OrdineDao;
 import com.example.agriturismo.model.Ordine;
 import com.example.agriturismo.model.Prodotto;
+import com.example.agriturismo.model.ProdottoQuantita;
 import com.example.agriturismo.model.Utente;
 import jakarta.servlet.http.HttpSession;
 import org.aspectj.weaver.ast.Or;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +32,23 @@ public class OrdineServiceImpl implements OrdineService{
             Ordine ordine = new Ordine();
             ordine.setDataOraOrdine(LocalDateTime.now());
             ordine.setUtente(utente);
-            ordine.setProdotti(carrello);
+
+            List<ProdottoQuantita> carrelloQuantita = new ArrayList<>();
+            for(Prodotto p : carrello){
+                boolean prodottoPresente = false;
+                for(ProdottoQuantita pq : carrelloQuantita){
+                    if(p.getId() == pq.getProdotto().getId()){
+                        prodottoPresente = true;
+                        pq.setQuantita(pq.getQuantita() + 1);
+                    }
+                }
+                if(!prodottoPresente){
+                    ProdottoQuantita prodottoQuantita = new ProdottoQuantita(p, 1);
+                    carrelloQuantita.add(prodottoQuantita);
+                }
+            }
+
+            ordine.setProdottiQuantita(carrelloQuantita);
             ordine.setImporto(prodottoService.getTotaleCarrello(session));
             ordineDao.save(ordine);
             utente.getOrdini().add(ordine);
