@@ -49,6 +49,10 @@
                     <li th:if="${utente != null}" class="nav-item">
                         <a class="nav-link" th:href="@{/riservatautente/logout}">Logout Utente</a>
                     </li>
+                    <li th:if="${utente != null}" class="nav-item">
+                        <a class="nav-link" th:href="@{/riservatautente/elimina(id=${utente.id})}" onclick="return confirm('Sei sicuro di volere eliminare il tuo Account?')">Elimina Account
+                        </a>
+                    </li>
                     <li th:if="${admin != null}" class="nav-item">
                         <a class="nav-link" th:href="@{/adminprodotti/logout}">Logout Admin</a>
                     </li>
