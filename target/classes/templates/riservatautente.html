@@ -16,7 +16,9 @@
     <br>
     <h4 th:if="${carrello == null}">Il tuo carrello è vuoto</h4>
     <h4 th:if="${carrello != null}">Il tuo carrello</h4>
-    <a class="text-light" th:href="@{/catalogo}"><button th:if="${carrello == null}" type="button" class="btn btn-success">Vai al nostro catalogo</button></a>
+    <a class="text-light" th:href="@{/catalogo}">
+        <button th:if="${carrello == null}" type="button" class="btn btn-success">Vai al nostro catalogo</button>
+    </a>
     <!--TABELLA CARRELLO-->
     <table th:if="${carrello != null}" class="table">
         <thead class="thead-light">
@@ -37,12 +39,17 @@
         </tbody>
     </table>
     <br>
-    <h5 th:if="${carrello != null}" th:text="'Totale Carrello ' + ${#numbers.formatDecimal(totale, 1, 'POINT', 2, 'COMMA')} + ' €'"></h5>
+    <h5 th:if="${carrello != null}"
+        th:text="'Totale Carrello ' + ${#numbers.formatDecimal(totale, 1, 'POINT', 2, 'COMMA')} + ' €'"></h5>
     <br>
     <div class="d-flex flex-column">
-        <a class="text-light" th:href="@{/catalogo}"><button th:if="${carrello != null}" type="button" class="btn btn-success">Continua ad acquistare</button></a>
+        <a class="text-light" th:href="@{/catalogo}">
+            <button th:if="${carrello != null}" type="button" class="btn btn-success">Continua ad acquistare</button>
+        </a>
         <img th:if="${carrello != null}" src="img/pay-pal-grande.png" width="120" style="margin: 20px 0px">
-        <a class="text-light" th:href="@{/riservatautente/invia}"><button th:if="${carrello != null}" type="button" class="btn btn-success">Acquista con PayPal</button></a>
+        <a class="text-light" th:href="@{/riservatautente/invia}">
+            <button th:if="${carrello != null}" type="button" class="btn btn-success">Acquista con PayPal</button>
+        </a>
     </div>
 
     <br>
@@ -81,18 +88,21 @@
         <input type="hidden" th:field="*{id}">
         <input type="hidden" th:field="*{ordini}">
         <div class="form-floating">
-            <input type="text" th:field="*{nome}" placeholder="inserire nome" class="form-control" id="floatingInput" required>
+            <input type="text" th:field="*{nome}" placeholder="inserire nome" class="form-control" id="floatingInput"
+                   required>
             <label for="floatingInput">Nome</label>
         </div>
         <br>
         <div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="alert alert-danger" role="alert"></div>
 
         <div class="form-floating">
-            <input type="text" th:field="*{cognome}" placeholder="inserire cognome" class="form-control" id="floatingInput" required>
+            <input type="text" th:field="*{cognome}" placeholder="inserire cognome" class="form-control"
+                   id="floatingInput" required>
             <label for="floatingInput">Cognome</label>
         </div>
         <br>
-        <div th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}" class="alert alert-danger" role="alert"></div>
+        <div th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}" class="alert alert-danger"
+             role="alert"></div>
 
         <div class="form-floating">
             <input type="text" th:field="*{username}" class="form-control" id="floatingInput" readonly>
@@ -101,25 +111,30 @@
         <br>
 
         <div class="form-floating">
-            <input type="text" th:field="*{password}" placeholder="scegli password" id="pwd" class="form-control" required>
+            <input type="text" th:field="*{password}" placeholder="scegli password" id="pwd" class="form-control"
+                   required>
             <label>Password</label>
             <button type="button" onclick="mostra()">Mostra/Nascondi</button>
         </div>
         <br>
-        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="alert alert-danger" role="alert"></div>
+        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="alert alert-danger"
+             role="alert"></div>
 
         <div class="form-floating">
-            <input type="text" th:field="*{indirizzo}" placeholder="inserisci indirizzo" class="form-control" id="floatingInput" required>
+            <input type="text" th:field="*{indirizzo}" placeholder="inserisci indirizzo" class="form-control"
+                   id="floatingInput" required>
             <label for="floatingInput">Indirizzo</label>
         </div>
         <br>
         <div class="form-floating">
-            <input type="text" th:field="*{email}" placeholder="inserisci email" class="form-control" id="floatingInput" required>
+            <input type="text" th:field="*{email}" placeholder="inserisci email" class="form-control" id="floatingInput"
+                   required>
             <label for="floatingInput">Email</label>
         </div>
         <br>
         <div class="form-floating">
-            <input type="number" th:field="*{telefono}" placeholder="inserisci telefono" class="form-control" id="floatingInput" required>
+            <input type="number" th:field="*{telefono}" placeholder="inserisci telefono" class="form-control"
+                   id="floatingInput" required>
             <label for="floatingInput">Telefono</label>
         </div>
         <br>
@@ -127,7 +142,11 @@
     </form>
 </div>
 <div>
-    <a class="link-light" th:href="@{/riservatautente/elimina(id=${utente.id})}"><button type="button" class="btn btn-success">Elimina Account</button></a>
+    <a class="link-light" th:href="@{/riservatautente/elimina(id=${utente.id})}">
+        <button type="button" class="btn btn-success"
+                onclick="return confirm('Sei sicuro di volere eliminare il tuo Account?')">Elimina Account
+        </button>
+    </a>
 </div>
 
 
