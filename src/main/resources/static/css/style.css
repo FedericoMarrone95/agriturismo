@@ -334,3 +334,12 @@ img.immagine-categoria {
 .white-text {
     color: #fff !important
 }
+
+.back-img {
+    width: 100vw;
+    height: 650px;
+    background-image: url(../img/chisiamo2.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: inset 0 0 0 1000px rgba(0,0,0,.3);
+}
