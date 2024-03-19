@@ -119,7 +119,7 @@ public class ProdottoServiceImpl implements ProdottoService {
         prodotto.setTipologia(tipologiaService.getTipologiaById(idTipologia));
         prodotto.setNome(nome);
         Map<String, String> errori = new HashMap<>();
-        if(!Pattern.matches("[a-zA-Z0-9\\sàèìòù,.'-]{1,50}", nome)){
+        if(!Pattern.matches("[a-zA-Z0-9\\sàèìòù,.'-]{1,100}", nome)){
             errori.put("nome", "Caratteri non ammessi");
         }
         try{
