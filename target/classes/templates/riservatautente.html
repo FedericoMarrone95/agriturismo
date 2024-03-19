@@ -126,6 +126,10 @@
         <button class="btn btn-success w-100 py-2" type="submit">Modifica Dati</button>
     </form>
 </div>
+<div>
+    <a class="link-light" th:href="@{/riservatautente/elimina(id=${utente.id})}"><button type="button" class="btn btn-success">Elimina Account</button></a>
+</div>
+
 
 <!--<form th:object="${utente}" method="post">
     <input type="hidden" th:field="*{id}">
@@ -156,6 +160,7 @@
 </form>-->
 
 <div th:replace="~{fragments/footer :: footer}"/>
+
 
 <script>
     document.addEventListener("DOMContentLoaded", function(){

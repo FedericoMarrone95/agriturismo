@@ -41,5 +41,10 @@ public class UtenteServiceImpl implements UtenteService{
         return utenti;
     }
 
+    @Override
+    public void cancellaAccount(int id) {
+        utenteDao.deleteById(id);
+    }
+
 
 }

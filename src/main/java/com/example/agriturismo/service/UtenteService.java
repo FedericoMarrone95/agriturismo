@@ -10,4 +10,5 @@ public interface UtenteService {
     void registraUtente(Utente utente);
     boolean controlloUsername(String username);
     List<Utente> getUtenti();
+    void cancellaAccount(int id);
 }

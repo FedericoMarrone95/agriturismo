@@ -78,4 +78,11 @@ public class RiservataUtenteController {
         session.setAttribute("utente", utente);
         return "redirect:/riservatautente";
     }
+    @GetMapping("/elimina")
+    public String eliminaAccount(@RequestParam("id") int id,HttpSession session){
+        utenteService.cancellaAccount(id);
+        session.removeAttribute("utente");
+        return "redirect:/";
+    }
+
 }
