@@ -10,6 +10,8 @@
 <body>
 <div th:replace="~{fragments/navbar :: navbar}"/>
 <!--SIDEBAR TIPOLOGIE-->
+<div class="container-fluid">
+    <div class="row">
         <div class="col-12 col-md-2 pad-top-50 side-bg" style="position:relative">
             <div style="position:fixed">
                 <h4 class="text-light" style="padding-top: 12px">Filtra per Tipologie</h4>
@@ -24,27 +26,28 @@
             </div>
         </div>
 
-    <div class="col-12 col-md-10 pad-top-50">
-        <h1 class="text-center" th:text="${nomeTipologia == null ? 'Tutti i prodotti' : nomeTipologia}">Tipologia</h1>
+        <div class="col-12 col-md-10 pad-top-50">
+            <h1 class="text-center" th:text="${nomeTipologia == null ? 'Tutti i prodotti' : nomeTipologia}">Tipologia</h1>
 
-        <div class="d-flex lista-prodotti">
-            <div th:each="prodotto : ${prodotti}" class="card mt-3" style="width: 18rem; margin-left: 20px;">
-                <img th:src="@{${prodotto.immagine == null ? 'img/markerImage.png' : prodotto.immagine}}" class="card-img-top max-img-size" alt="Immagine Prodotto">
-                <div class="card-body">
-                    <h5 th:text="${prodotto.nome}" class="card-title" style="margin: 0"></h5>
-                    <a th:href="@{/catalogo(tipologiaId=${prodotto.tipologia.id})}" th:text="${prodotto.tipologia.nome}" class="card-text text-dark" style="margin: 0; text-decoration: underline"></a>
-                    <p th:text="'Scorte: ' + ${prodotto.scorte}" class="card-text" style="margin: 0"></p>
-                    <p th:text="${#numbers.formatDecimal(prodotto.prezzo, 1, 'POINT', 2, 'COMMA')}+' €'" class="list-group-item" style="margin: 0"></p>
-                </div>
-                <a th:href="@{/dettaglio(id=${prodotto.id})}" class="text-light">
-                    <div class="card-footer text-center">
-                        <button type="button" class="btn btn-success">Visualizza Prodotto</button>
+            <div class="d-flex lista-prodotti">
+                <div th:each="prodotto : ${prodotti}" class="card mt-3" style="width: 18rem; margin-left: 20px;">
+                    <img th:src="@{${prodotto.immagine == null ? 'img/markerImage.png' : prodotto.immagine}}" class="card-img-top max-img-size" alt="Immagine Prodotto">
+                    <div class="card-body">
+                        <h5 th:text="${prodotto.nome}" class="card-title" style="margin: 0"></h5>
+                        <a th:href="@{/catalogo(tipologiaId=${prodotto.tipologia.id})}" th:text="${prodotto.tipologia.nome}" class="card-text text-dark" style="margin: 0; text-decoration: underline"></a>
+                        <p th:text="'Scorte: ' + ${prodotto.scorte}" class="card-text" style="margin: 0"></p>
+                        <p th:text="${#numbers.formatDecimal(prodotto.prezzo, 1, 'POINT', 2, 'COMMA')}+' €'" class="list-group-item" style="margin: 0"></p>
                     </div>
-                </a>
+                    <a th:href="@{/dettaglio(id=${prodotto.id})}" class="text-light">
+                        <div class="card-footer text-center">
+                            <button type="button" class="btn btn-success">Visualizza Prodotto</button>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-
+</div>
 
 <div th:replace="~{fragments/footer :: footer}"/>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
