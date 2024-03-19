@@ -140,13 +140,31 @@
         <br>
         <button class="btn btn-success w-100 py-2" type="submit">Modifica Dati</button>
     </form>
-</div>
-<div>
-    <a class="link-light" th:href="@{/riservatautente/elimina(id=${utente.id})}">
-        <button type="button" class="btn btn-success"
-                onclick="return confirm('Sei sicuro di volere eliminare il tuo Account?')">Elimina Account
+    <div class="d-flex justify-content-center mb-50 m-12" style="width: 50%">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #BF3131 !important">
+            Elimina Account
         </button>
-    </a>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Elimina Account</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Sei sicuro di voler eliminare il tuo account? <br> Premi "No" per annullare <br> "Si" per continuare.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary text-dark" data-bs-dismiss="modal"
+                        style="background-color: #C7C8CC !important;">No</button>
+                <a class="link-light" th:href="@{/riservatautente/elimina(id=${utente.id})}">
+                <button type="button" class="btn btn-primary" style="background-color: #BF3131 !important">Si</button>
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 
 
