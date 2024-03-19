@@ -79,6 +79,10 @@
             </td>
             <td><a th:href="@{/riservatautente/rimuovi(id=${prodottoQuantita.prodotto.id})}">Rimuovi Prodotto</a></td>
         </tr>
+        <tr th:if="${result != null}"
+            th:text="${result.equals('y') ? 'Articolo aggiunto con successo' : 'Scorte insufficienti'}"
+            th:style="${result.equals('y') ? 'color:green' : 'color:red'}" class="alert" role="alert">
+        </tr>
         </tbody>
     </table>
     <br>

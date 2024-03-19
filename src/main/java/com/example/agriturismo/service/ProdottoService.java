@@ -20,4 +20,5 @@ public interface ProdottoService {
     void cancellaProdotto(int id);
     List<Prodotto> getProdottiByTipologia(int idTipologia);
     List<ProdottoQuantita> trasformaACarrelloQuantita(HttpSession session);
+    void modificaScorte(HttpSession session);
 }

@@ -41,11 +41,19 @@ public class ProdottoServiceImpl implements ProdottoService {
         Prodotto prodotto = getProdottoById(id);
         List<Prodotto> carrello = (List<Prodotto>) session.getAttribute("carrello");
         if (carrello == null) {
+            if(prodotto.getScorte() == 0)
+                return false;
             carrello = new ArrayList<>();
             carrello.add(prodotto);
             session.setAttribute("carrello", carrello);
             return true;
         } else {
+            int quantita = 0;
+            for(Prodotto p:carrello)
+                if(p.getId()==id)
+                    quantita++;
+            if(prodotto.getScorte() <= quantita)
+                return false;
             carrello.add(prodotto);
             session.setAttribute("carrello", carrello);
             return true;
@@ -181,8 +189,19 @@ public class ProdottoServiceImpl implements ProdottoService {
                 carrelloQuantita.add(prodottoQuantita);
             }
         }
+        session.setAttribute("carrelloQuantita", carrelloQuantita);
         return carrelloQuantita;
     }
 
-
+    @Override
+    public void modificaScorte(HttpSession session){
+        List<ProdottoQuantita> carrelloQuantita = (List<ProdottoQuantita>) session.getAttribute("carrelloQuantita");
+        if(carrelloQuantita != null){
+            for(ProdottoQuantita pq : carrelloQuantita) {
+                pq.getProdotto().setScorte(pq.getProdotto().getScorte() - pq.getQuantita());
+                prodottoDao.save(pq.getProdotto());
+            }
+            session.setAttribute("carrelloQuantita", carrelloQuantita);
+        }
+    }
 }

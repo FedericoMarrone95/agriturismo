@@ -56,18 +56,18 @@
             <h1 th:text="${prodotto.nome}">Titolo Prodotto</h1>
             <p th:text="${prodotto.descrizione}">Descrizione</p>
             <br>
-            <div class="qty">
+            <!--<div class="qty">
                 <button class="btn" onclick="qty('plus')">+</button>
                 <div class="number">1</div>
                 <button class="btn" onclick="qty('less')">-</button>
-            </div>
+            </div>-->
             <p th:text="'Tipologia: '+${prodotto.tipologia.nome}">Tipologia</p>
             <br>
             <h4 th:text="${#numbers.formatDecimal(prodotto.prezzo, 1, 'POINT', 2, 'COMMA')}+'€'">Prezzo</h4>
             <br>
-            <a class="link-light" th:href="@{/dettaglio/aggiungi(id=${prodotto.id},quantita=1)}"><button type="button" class="btn btn-success">Aggiungi al carrello</button></a>
+            <a class="link-light" th:href="@{/dettaglio/aggiungi(id=${prodotto.id})}"><button type="button" class="btn btn-success">Aggiungi al carrello</button></a>
             <div th:if="${result != null}"
-                 th:text="${result.equals('y') ? 'Articolo aggiunto con successo' : 'Articolo già presente in carrello'}"
+                 th:text="${result.equals('y') ? 'Articolo aggiunto con successo' : 'Scorte insufficienti'}"
                  th:style="${result.equals('y') ? 'color:green' : 'color:red'}" class="alert" role="alert">
 
             </div>
