@@ -33,11 +33,10 @@ public class DettaglioController
   @GetMapping("/aggiungi")
   public String add(
           @RequestParam("id") int id,
-          @RequestParam("quantita") int quantita,
           HttpSession session
   )
   {
-    if(!prodottoService.aggiungiACarrello(id, quantita, session))
+    if(!prodottoService.aggiungiACarrello(id, session))
       return "redirect:/dettaglio?id=" + id + "&add=n";
     return "redirect:/dettaglio?id=" + id + "&add=y";
   }

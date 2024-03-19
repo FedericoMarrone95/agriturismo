@@ -3,6 +3,7 @@ package com.example.agriturismo.service;
 import com.example.agriturismo.dao.ProdottoDao;
 import com.example.agriturismo.model.Prodotto;
 
+import com.example.agriturismo.model.ProdottoQuantita;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,7 +36,7 @@ public class ProdottoServiceImpl implements ProdottoService {
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean aggiungiACarrello(int id, int quantita, HttpSession session)
+    public boolean aggiungiACarrello(int id, HttpSession session)
     {
         Prodotto prodotto = getProdottoById(id);
         List<Prodotto> carrello = (List<Prodotto>) session.getAttribute("carrello");
@@ -61,9 +62,8 @@ public class ProdottoServiceImpl implements ProdottoService {
         return null;
     }
 
-    @SuppressWarnings("unchecked")
     @Override
-    public void rimuoviDalCarrello(int id, HttpSession session)
+    public void diminuisciDalCarrello(int id, HttpSession session)
     {
         // otteniamo il carrello dalla sessione (sicuri di averlo)
         List<Prodotto> carrello = (List<Prodotto>) session.getAttribute("carrello");
@@ -74,6 +74,18 @@ public class ProdottoServiceImpl implements ProdottoService {
                 carrello.remove(p);
                 break;
             }
+        if(carrello.size() > 0) // sovrascriviamo
+            session.setAttribute("carrello", carrello);
+        else // rimuoviamo completamente
+            session.removeAttribute("carrello");
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public void rimuoviDalCarrello(int id, HttpSession session)
+    {
+        // otteniamo il carrello dalla sessione (sicuri di averlo)
+        List<Prodotto> carrello = (List<Prodotto>) session.getAttribute("carrello");
         // rimuoviamo il prodotto dal carrello (versione avanzata)
         carrello = carrello
                 .stream()
@@ -148,6 +160,28 @@ public class ProdottoServiceImpl implements ProdottoService {
     @Override
     public List<Prodotto> getProdottiByTipologia(int idTipologia) {
         return prodottoDao.findByTipologiaId(idTipologia);
+    }
+
+    @Override
+    public List<ProdottoQuantita> trasformaACarrelloQuantita(HttpSession session){
+        List<Prodotto> carrello = (List<Prodotto>) session.getAttribute("carrello");
+        if(carrello == null)
+            return null;
+        List<ProdottoQuantita> carrelloQuantita = new ArrayList<>();
+        for(Prodotto p : carrello){
+            boolean prodottoPresente = false;
+            for(ProdottoQuantita pq : carrelloQuantita){
+                if(p.getId() == pq.getProdotto().getId()){
+                    prodottoPresente = true;
+                    pq.setQuantita(pq.getQuantita() + 1);
+                }
+            }
+            if(!prodottoPresente){
+                ProdottoQuantita prodottoQuantita = new ProdottoQuantita(p, 1);
+                carrelloQuantita.add(prodottoQuantita);
+            }
+        }
+        return carrelloQuantita;
     }
 
 

@@ -36,6 +36,7 @@ public class RiservataUtenteController {
         Utente utente = (Utente) session.getAttribute("utente");
         model.addAttribute("utente", utente);
         model.addAttribute("carrello", prodottoService.getCarrello(session));
+        model.addAttribute("carrelloQuantita", prodottoService.trasformaACarrelloQuantita(session));
         model.addAttribute("totale", prodottoService.getTotaleCarrello(session));
         model.addAttribute("send", send);
         return "riservatautente";
@@ -46,6 +47,26 @@ public class RiservataUtenteController {
     {
         session.removeAttribute("utente");
         return "redirect:/";
+    }
+
+    @GetMapping("/aggiungi")
+    public String increase(
+            @RequestParam("id") int id,
+            HttpSession session
+    )
+    {
+        prodottoService.aggiungiACarrello(id, session);
+        return "redirect:/riservatautente";
+    }
+
+    @GetMapping("/diminuisci")
+    public String decrease(
+            @RequestParam("id") int id,
+            HttpSession session
+    )
+    {
+        prodottoService.diminuisciDalCarrello(id, session);
+        return "redirect:/riservatautente";
     }
 
     @GetMapping("/rimuovi")
