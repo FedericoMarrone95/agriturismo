@@ -36,7 +36,7 @@
             (prodottoQuantita.prodotto.prezzo * prodottoQuantita.quantita), 1, 'POINT', 2, 'COMMA')} + ' €'">Prezzo</td>
             <td class="d-flex">
                 <a th:href="@{/riservatautente/diminuisci(id=${prodottoQuantita.prodotto.id})}"><button class="btn">-</button></a>
-                <p th:text="${prodottoQuantita.quantita}" style="padding: 0px 10px;"></p>
+                <span class="d-flex align-self-center" th:text="${prodottoQuantita.quantita}" style="padding: 0px 10px;"></span>
                 <a th:href="@{/riservatautente/aggiungi(id=${prodottoQuantita.prodotto.id})}"><button class="btn">+</button></a>
                 <!--<button class="btn" onclick="qty('less')">-</button>
                 <div class="number">1</div>
