@@ -35,9 +35,9 @@
             <td th:text="${#numbers.formatDecimal(
             (prodottoQuantita.prodotto.prezzo * prodottoQuantita.quantita), 1, 'POINT', 2, 'COMMA')} + ' €'">Prezzo</td>
             <td class="d-flex">
-                <a class="btn btn-primary" th:href="@{/riservatautente/diminuisci(id=${prodottoQuantita.prodotto.id})}">-</a>
-                <p th:text="${prodottoQuantita.quantita}"></p>
-                <a class="btn btn-primary" th:href="@{/riservatautente/aggiungi(id=${prodottoQuantita.prodotto.id})}">+</a>
+                <a th:href="@{/riservatautente/diminuisci(id=${prodottoQuantita.prodotto.id})}"><button class="btn">-</button></a>
+                <p th:text="${prodottoQuantita.quantita}" style="padding: 0px 10px;"></p>
+                <a th:href="@{/riservatautente/aggiungi(id=${prodottoQuantita.prodotto.id})}"><button class="btn">+</button></a>
                 <!--<button class="btn" onclick="qty('less')">-</button>
                 <div class="number">1</div>
                 <button class="btn" onclick="qty('plus')">+</button>-->
