@@ -12,7 +12,7 @@
 <!--SIDEBAR TIPOLOGIE-->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12 col-md-2 pad-top-50 side-bg" style="position:relative">
+        <div class="col-12 col-md-2 pad-top-50 side-bg" style="position:fixed">
             <div style="position:fixed">
                 <h4 class="text-light" style="padding-top: 12px">Filtra per Tipologie</h4>
                 <ul class="btn-toggle-nav">
@@ -26,7 +26,7 @@
             </div>
         </div>
 
-        <div class="col-12 col-md-10 pad-top-50">
+        <div class="col-12 col-md-10 pad-top-50" style="left: 250px; position: relative;">
             <h1 class="text-center" th:text="${nomeTipologia == null ? 'Tutti i prodotti' : nomeTipologia}">Tipologia</h1>
 
             <div class="d-flex lista-prodotti">
