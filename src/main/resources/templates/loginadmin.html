@@ -9,9 +9,9 @@
 <body>
 <div th:replace="~{fragments/navbar :: navbar}"/>
 
-<main class="login">
+<main class="login-adm">
     <form action="/loginadmin" method="post" class="form-login">
-        <h1 class="h3 mb-3 fw-normal text-center white text">Area Admin</h1>
+        <h1 class="h3 mb-3 fw-normal text-center white-text">Area Admin</h1>
         <div th:if="${errore}" role="alert">
             Credenziali Errate. Riprova
         </div>
