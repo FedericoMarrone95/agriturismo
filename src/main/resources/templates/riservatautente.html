@@ -134,7 +134,7 @@
             <input type="text" th:field="*{password}" placeholder="scegli password" id="pwd" class="form-control"
                    required>
             <label>Password</label>
-            <button type="button" onclick="mostra()">Mostra/Nascondi</button>
+            <button class="btn" style="margin-top: 5px" type="button" onclick="mostra()">Mostra/Nascondi</button>
         </div>
         <br>
         <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="alert alert-danger"
